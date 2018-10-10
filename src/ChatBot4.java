@@ -9,11 +9,6 @@ import java.util.Scanner;
  */
 public class ChatBot4
 {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-	int emotion = 0;
-
-
-
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -26,13 +21,9 @@ public class ChatBot4
 
 		while (!statement.equals("Bye"))
 		{
-
-
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
-
-
 		}
 
 	}
