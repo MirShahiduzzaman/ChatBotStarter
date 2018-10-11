@@ -16,22 +16,22 @@ public class ChatBotRunner
 		ChatBot1 chatbot1 = new ChatBot1();
 		ChatBotMir chatbot2 = new ChatBotMir();
 		ChatBotSheba chatbot3 = new ChatBotSheba();
-		ChatBot4 chatbot4 = new ChatBot4();
+		ChatBotCalvin chatbot4 = new ChatBotCalvin();
 		
 
 		Scanner in = new Scanner (System.in);
-		System.out.println("Welcome to the chatbot, nice to meet you.");
+		System.out.println("Welcome to the chatbot place, nice to meet you!\nDo you want to talk to the traveler(1), the chef(2), the teacher(3), or the riddler(4)?");
 		String statement = in.nextLine();
 
 
 		while (!statement.equals("Bye"))
 		{
 			//Use Logic to control which chatbot is handling the conversation\
-			//This example has only chatbot1
+			//This example had only chatbot1
 
 
 
-			chatbot3.chatLoop(statement);
+			chatbot2.chatLoop(statement);
 
 
 			statement = in.nextLine();

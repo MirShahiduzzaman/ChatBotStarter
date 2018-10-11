@@ -1,21 +1,17 @@
 import java.util.Random;
 import java.util.Scanner;
-
 /**
  * A program to carry on conversations with a human user.
  * This version:
  * @author Brooklyn Tech CS Department
  * @version September 2018
  */
-public class ChatBot4
+public class ChatBotCalvin
 {
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
 	 */
-
-	int emotion = 0;
-
 	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
@@ -38,7 +34,6 @@ public class ChatBot4
 	{
 		return "Hi, what is up?";
 	}
-	
 	/**
 	 * Gives a response to a user statement
 	 * 
@@ -49,7 +44,7 @@ public class ChatBot4
 	public String getResponse(String statement)
 	{
 		String response = "";
-		
+
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
@@ -58,39 +53,40 @@ public class ChatBot4
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "Why so negative?";
-
 		}
-		
+
 		else if (findKeyword(statement, "levin") >= 0)
 		{
 			response = "More like LevinTheDream amiright?";
-
 		}
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
-			response = transformIWantToStatement(statement);
+			response = transformIWantStatement(statement);
 		}
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
+        else if (findKeyword(statement, "I don't know", 0) >= 0)
+        {
+            response = transformIDontKnowStatement(statement);
+        }
 		else
 		{
 			response = getRandomResponse();
 		}
-		
+
 		return response;
 	}
-	
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "Why do you want to <something>?"
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
 	 */
-	private String transformIWantToStatement(String statement)
+	private String transformIDontKnowStatement(String statement)
 	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
@@ -101,12 +97,26 @@ public class ChatBot4
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I want to", 0);
-		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
+		int psn = findKeyword (statement, "I don't know", 0);
+		String restOfStatement = statement.substring(psn + 12).trim();
+		return "Do you want to know more about " + restOfStatement + "?";
 	}
 
-	
+    private String transformIWantToStatement(String statement)
+    {
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
+        int psn = findKeyword (statement, "I want to", 0);
+        String restOfStatement = statement.substring(psn + 9).trim();
+        return "Why do you want to " + restOfStatement + "?";
+    }
 	/**
 	 * Take a statement with "I want <something>." and transform it into 
 	 * "Would you really be happy if you had <something>?"
@@ -128,8 +138,6 @@ public class ChatBot4
 		String restOfStatement = statement.substring(psn + 6).trim();
 		return "Would you really be happy if you had " + restOfStatement + "?";
 	}
-	
-	
 	/**
 	 * Take a statement with "I <something> you" and transform it into 
 	 * "Why do you <something> me?"
@@ -154,10 +162,6 @@ public class ChatBot4
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 		return "Why do you " + restOfStatement + " me?";
 	}
-	
-
-	
-	
 	/**
 	 * Search for one word in phrase. The search is not case
 	 * sensitive. This method will check that the given goal
@@ -221,7 +225,6 @@ public class ChatBot4
 
 		return -1;
 	}
-	
 	/**
 	 * Search for one word in phrase.  The search is not case sensitive.
 	 * This method will check that the given goal is not a substring of a longer string
@@ -234,9 +237,6 @@ public class ChatBot4
 	{
 		return findKeyword (statement, goal, 0);
 	}
-	
-
-
 	/**
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
@@ -246,7 +246,7 @@ public class ChatBot4
 		Random r = new Random ();
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
-	
+
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
 			"Hmmm.",
 			"Do you really think so?",
@@ -257,5 +257,5 @@ public class ChatBot4
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	
+
 }
