@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Brooklyn Tech CS Department
  * @version September 2018
  */
-public class ChatBot3
+public class ChatBotSheba
 {
 
 	String wordList = "Al dente: To the tooth in Italian, the term refers to firm pasta cooked to the right level of resistance when chewed; Braise: To sauté meat or vegetables, which are then slowly cooked over low heat using ceramic earthenware or a stockpot; Bechamel: A rich white sauce infused with milk, herbs and butter; Charcuterie: A fancy French term for the preparation of cooked meats ranging from bacon to cured meats and sausage. The video above provides tips for preparing your own charcuterie plate;Chiffonade: Delicate looking curlicues of shredded or finely cut vegetable leaves used to garnish a plate or soup;Deglaze: To remove browned bits adhering to a saucepan through the judicious use of water and the application of high heat;Dredge: To lightly coat food with a mixture of cornmeal, breadcrumbs and flour;Dust: To lightly coat food with a powdery ingredient or to lightly coat a work surface with flour;Emulsion: To have one liquid suspended in another, often with liquids that do not mix easily, so emulsions are performed through vigorous stirring or shaking. For example, the combination of oil and vinegar to make salad dressing. The video above demonstrates a few different emulsion techniques for dressings and sauces; Fond: The roasted bits that stick to the surface area of a baking sheet, often used to make sauces and soup stocks;Fines herbes: A seasoning mix that forms the basis of French cooking. Involving a combination of fresh herbs, such as parsley, garlic greens, and tarragon, fines herbes are used in the preparations of meat and vegetables;Gratin: Any dish that is topped with cheese or breadcrumbs and dabs of butter and then baked in the oven, like the pumpkin and pasta gratin above;Grease: To apply butter or oil to a cooking surface to prevent food from sticking when cooked;Hotchpotch: A catchall phrase used to describe any combinations of meat and vegetables braised over low heat to make stew;Infuse: To soak herbs, teas or fruits in liquid to extract their repsective flavors;Julienne: A technique used to describe the process of cutting vegetables into matchstick-sized strips. The video above demonstrates the style;Kosher salt: A flaky type of granular salt preferred by cooks due to its lack of additives, such as iodine;Leaven: The addition of yeast, baking soda or powder that causes bread and cakes to rise during the baking process. When combined with dough or batter, these ingredients form carbon dioxide bubbles, thereby lightening the texture and increasing the volume of baked goods;Mesclun: A combination of small leafy greens often found in specialty stores and food co-ops;Macerate: To immerse food in liquid to breakdown and soften. The technique is commonly used to infuse fruit with liquor and vise versa;Nap: To cover cooked food in a thin layer of sauce. The term is derived from the French word for tablecloth, which is nappe.;Muddle: To press fruit and herbs against the side of a glass to release their juices;Pinch: To grasp a small quantity of spices or seasonings between the thumb and forefinger for sprinkling over food.";
@@ -15,7 +15,7 @@ public class ChatBot3
 
 	int emotion = 0;
 
-//emotional
+
 
 
 	/**
@@ -47,7 +47,7 @@ public class ChatBot3
 	public String getGreeting()
 	{
 		//return "There's a lot of weird terms in the world of food. Type some below and I will define it";
-		return "Hey there, what food shows do you watch?"
+		return "Hey there, what food shows do you watch?";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class ChatBot3
 					.length() - 1);
 		}
 		int psn = findKeyword (statement, "like watching", 0);
-		String restOfStatement = statement.substring(psn + 12).trim();
+		String restOfStatement = statement.substring(psn + 13).trim();
 		return "Is " + restOfStatement + "a Baking or Cooking show?";
 	}
 
