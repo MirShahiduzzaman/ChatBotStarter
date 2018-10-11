@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Brooklyn Tech CS Department
  * @version September 2018
  */
-public class ChatBot4
+public class ChatBotCalvin
 {
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -246,7 +246,7 @@ public class ChatBot4
 		Random r = new Random ();
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
-	
+
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
 			"Hmmm.",
 			"Do you really think so?",
@@ -257,5 +257,5 @@ public class ChatBot4
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	
+
 }
