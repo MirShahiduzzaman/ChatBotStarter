@@ -15,6 +15,7 @@ public class ChatBotSheba
 
 	int emotion = 0;
 
+//emotional
 
 
 	/**

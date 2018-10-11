@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Brooklyn Tech CS Department
  * @version September 2018
  */
-public class ChatBot2
+public class ChatBotMir
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
@@ -41,7 +41,7 @@ public class ChatBot2
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hey, wasup? What recipes do you wanna learn about?";
 	}
 	
 	/**
@@ -159,7 +159,28 @@ public class ChatBot2
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 		return "Why do you " + restOfStatement + " me?";
 	}
-	
+
+	/**
+	 * Take a statement with "recipe for <something>." and transform it into
+	 * "The recipe for <something> is simple!"
+	 * @param statement the user statement, assumed to contain "recipe for"
+	 * @return the transformed statement
+	 */
+	private String transformRecipeForStatement(String statement)
+	{
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "recipe for", 0);
+		String restOfStatement = statement.substring(psn + 6).trim();
+		return "The recipe for " + restOfStatement + " is simple!";
+	}
 
 	
 	
