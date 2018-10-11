@@ -17,14 +17,12 @@ public class ChatBotCalvin
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
 
-
 		while (!statement.equals("Bye"))
 		{
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
 		}
-
 	}
 	/**
 	 * Get a default greeting 	
@@ -55,15 +53,10 @@ public class ChatBotCalvin
 			response = "Why so negative?";
 		}
 
-		else if (findKeyword(statement, "levin") >= 0)
-		{
-			response = "More like LevinTheDream amiright?";
-		}
-
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
-			response = transformIWantStatement(statement);
+			response = transformIWantToStatement(statement);
 		}
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
@@ -77,7 +70,6 @@ public class ChatBotCalvin
 		{
 			response = getRandomResponse();
 		}
-
 		return response;
 	}
 	/**
@@ -244,18 +236,8 @@ public class ChatBotCalvin
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
-		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
+		String randomR = randomResponses [r.nextInt(randomResponses.length)];
+		return "Do you know that" + randomR;
 	}
-
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
-	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-
+	private String [] randomResponses = {"fries made in ...?", "pizza?", "food?"};
 }
