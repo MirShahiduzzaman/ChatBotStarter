@@ -47,7 +47,7 @@ public class ChatBot3
 	public String getGreeting()
 	{
 		//return "There's a lot of weird terms in the world of food. Type some below and I will define it";
-		return "Hey there, what food shows do you watch?"
+		return "Hey there, what food shows do you watch?";
 	}
 
 	/**
