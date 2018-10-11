@@ -13,6 +13,9 @@ public class ChatBot4
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
 	 */
+
+	int emotion = 0;
+
 	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
