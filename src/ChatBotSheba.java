@@ -15,7 +15,7 @@ public class ChatBotSheba
 
 	int emotion = 0;
 
-//emotional
+
 
 
 	/**
@@ -113,7 +113,7 @@ public class ChatBotSheba
 					.length() - 1);
 		}
 		int psn = findKeyword (statement, "like watching", 0);
-		String restOfStatement = statement.substring(psn + 12).trim();
+		String restOfStatement = statement.substring(psn + 13).trim();
 		return "Is " + restOfStatement + "a Baking or Cooking show?";
 	}
 
