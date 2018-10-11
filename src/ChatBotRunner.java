@@ -38,6 +38,7 @@ public class ChatBotRunner
 
 
 		}
+		in.close();
 	}
 
 }
