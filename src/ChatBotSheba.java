@@ -15,7 +15,7 @@ public class ChatBot3
 
 	int emotion = 0;
 
-
+//emotional
 
 
 	/**
