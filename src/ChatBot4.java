@@ -241,14 +241,6 @@ public class ChatBot4
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
-		if (emotion == 0)
-		{	
-			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-		}
-		if (emotion < 0)
-		{	
-			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-		}	
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
