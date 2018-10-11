@@ -41,7 +41,7 @@ public class ChatBotMir
 	 */	
 	public String getGreeting()
 	{
-		return "Hey, wasup? What recipes do you wanna learn about?";
+		return "Hey, wasup? What recipe do you wanna learn about?";
 	}
 	
 	/**
@@ -80,7 +80,11 @@ public class ChatBotMir
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
+		else if(findKeyword(statement, "recipe for",0) >= 0)
+        {
+            response = transformRecipeForStatement(statement);
+        }
 		else
 		{
 			response = getRandomResponse();
