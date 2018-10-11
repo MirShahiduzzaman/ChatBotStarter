@@ -16,7 +16,7 @@ public class ChatBotRunner
 		ChatBot1 chatbot1 = new ChatBot1();
 		ChatBotMir chatbot2 = new ChatBotMir();
 		ChatBotSheba chatbot3 = new ChatBotSheba();
-		ChatBot4 chatbot4 = new ChatBot4();
+		ChatBotCalvin chatbot4 = new ChatBotCalvin();
 		
 
 		Scanner in = new Scanner (System.in);
@@ -31,7 +31,7 @@ public class ChatBotRunner
 
 
 
-			chatbot3.chatLoop(statement);
+			chatbot1.chatLoop(statement);
 
 
 			statement = in.nextLine();
