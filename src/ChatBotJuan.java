@@ -7,32 +7,30 @@ import java.util.Scanner;
  * @author Brooklyn Tech CS Department
  * @version September 2018
  */
-public class ChatBot1
+public class ChatBotJuan
 {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-	int emotion = 0;
+	int emotion = 0;            	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
 	 */
+
 	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
-
-
+		System.out.println("If you want to change at any time then just say you want to switch.");
 		while (!statement.equals("Bye"))
 		{
-
-
-			statement = in.nextLine();
-			//getResponse handles the user reply
+			statement = in.nextLine();			//gets Response & handles the user reply
 			System.out.println(getResponse(statement));
-
-
+		    statement = in.nextLine();
+		    if(statement.equalsIgnoreCase("i want to switch")),
+		    {
+		    	 System.out.println("Hey just making sure, do you want to switch?");
+			}
 		}
-
 	}
 	/**
 	 * Get a default greeting 	
@@ -40,14 +38,12 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hi, My name is The dude, I know all about restaurants you can get some Hispanic, American and Indian food, which cuisine do you want to learn about today?";
 	}
 	
 	/**
 	 * Gives a response to a user statement
-	 * 
-	 * @param statement
-	 *            the user statement
+	 * @param statement - the user statement
 	 * @return a response based on the rules given
 	 */
 	public String getResponse(String statement)
@@ -58,13 +54,11 @@ public class ChatBot1
 		{
 			response = "Say something, please.";
 		}
-
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "Why so negative?";
                 	emotion--;
 		}
-		
 		else if (findKeyword(statement, "levin") >= 0)
 		{
 			response = "More like LevinTheDream, amiright?";
@@ -80,7 +74,6 @@ public class ChatBot1
 			response = "Go for the gold, man.";
 			emotion++;
 		}
-
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
@@ -89,17 +82,18 @@ public class ChatBot1
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
-		else
+		}
+		else if (findKeyword(statement,"I want to switch"))
+		{
+			return response;
+		}
+ 		else
 		{
 			response = getRandomResponse();
 		}
-		
-		return response;
 	}
-	
 	/**
-	 * Take a statement with "I want to <something>." and transform it into 
+	 * Take a statement with "I want to <something>." and transform it into
 	 * "Why do you want to <something>?"
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
