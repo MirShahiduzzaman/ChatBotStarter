@@ -12,7 +12,6 @@ public class ChatBotMir
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 
-
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -60,15 +59,19 @@ public class ChatBotMir
 			response = "Say something, please.";
 		}
 
+		else if(findKeyword(statement, "recipe for",0) >= 0)
+		{
+			response = transformRecipeForStatement(statement);
+		}
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "Why so negative?";
                 	emotion--;
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "mir") >= 0)
 		{
-			response = "More like LevinTheDream amiright?";
+			response = "More like MirTheDream amiright?";
 			emotion++;
 		}
 
@@ -81,10 +84,10 @@ public class ChatBotMir
 		{
 			response = transformIWantStatement(statement);
 		}
-		else if(findKeyword(statement, "recipe for",0) >= 0)
-        {
-            response = transformRecipeForStatement(statement);
-        }
+		else if((findKeyword(statement, "I",0) >= 0) && (findKeyword(statement, "you",statement.indexOf("I")))>=0)
+		{
+			response = transformIYouStatement(statement);
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -182,8 +185,10 @@ public class ChatBotMir
 					.length() - 1);
 		}
 		int psn = findKeyword (statement, "recipe for", 0);
-		String restOfStatement = statement.substring(psn + 6).trim();
+		String restOfStatement = statement.substring(psn + 10).trim();
 		return "The recipe for " + restOfStatement + " is simple!";
+
+		//if(restOfStatement )
 	}
 
 	
