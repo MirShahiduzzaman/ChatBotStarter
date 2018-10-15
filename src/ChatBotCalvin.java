@@ -8,6 +8,8 @@ import java.util.Scanner;
  */
 public class ChatBotCalvin
 {
+	String randomA;
+	int score = 0;
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -47,12 +49,11 @@ public class ChatBotCalvin
 		{
 			response = "Say something, please.";
 		}
-
-		else if (findKeyword(statement, "no") >= 0)
+		else if (randomA == response)
 		{
-			response = "Why so negative?";
+			response = "Correct";
+			score++;
 		}
-
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
@@ -62,9 +63,10 @@ public class ChatBotCalvin
 		{
 			response = transformIWantStatement(statement);
 		}
-        else if (findKeyword(statement, "I don't know", 0) >= 0)
+        else if (findKeyword(statement, "I don't know the answer to", 0) >= 0)
         {
-            response = transformIDontKnowStatement(statement);
+            response = transformIDontKnowTheAnswerToStatement(statement);
+
         }
 		else
 		{
@@ -78,7 +80,7 @@ public class ChatBotCalvin
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
 	 */
-	private String transformIDontKnowStatement(String statement)
+	private String transformIDontKnowTheAnswerToStatement(String statement)
 	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
@@ -89,9 +91,9 @@ public class ChatBotCalvin
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I don't know", 0);
+		int psn = findKeyword (statement, "I don't know the answer to", 0);
 		String restOfStatement = statement.substring(psn + 12).trim();
-		return "Do you want to know more about " + restOfStatement + "?";
+		return "The answer to " + restOfStatement + " is " + randomA;
 	}
 
     private String transformIWantToStatement(String statement)
@@ -236,8 +238,10 @@ public class ChatBotCalvin
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
-		String randomR = randomResponses [r.nextInt(randomResponses.length)];
-		return "Do you know that" + randomR;
+		String randomQ = randomQuestions [r.nextInt(randomQuestions.length)];
+		randomA = randomAnswers [r.nextInt(randomAnswers.length)];
+		return randomQ;
 	}
-	private String [] randomResponses = {"fries made in ...?", "pizza?", "food?"};
+	private String [] randomQuestions = {"fries made in ...?", "pizza?", "food?"};
+	private String [] randomAnswers = {"fries made in ...?", "pizza?", "food?"};
 }
