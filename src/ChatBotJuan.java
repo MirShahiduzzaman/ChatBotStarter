@@ -26,7 +26,7 @@ public class ChatBotJuan
 			statement = in.nextLine();			//gets Response & handles the user reply
 			System.out.println(getResponse(statement));
 		    statement = in.nextLine();
-		    if(statement.equalsIgnoreCase("i want to switch")),
+		    if(statement.equalsIgnoreCase("i want to switch"))
 		    {
 		    	 System.out.println("Hey just making sure, do you want to switch?");
 			}
@@ -83,7 +83,7 @@ public class ChatBotJuan
 		{
 			response = transformIWantStatement(statement);
 		}
-		else if (findKeyword(statement,"I want to switch"))
+		else if (findKeyword(statement,"I want to switch") >= 0)
 		{
 			return response;
 		}
@@ -91,6 +91,7 @@ public class ChatBotJuan
 		{
 			response = getRandomResponse();
 		}
+		return(response);
 	}
 	/**
 	 * Take a statement with "I want to <something>." and transform it into
