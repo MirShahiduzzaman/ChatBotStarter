@@ -26,18 +26,29 @@ public class ChatBotSheba
 	public void chatLoop(String statement)
 	{
         String [] tempList = wordList.split(";");
-        String [] termList = {};
-        String [] defList = {};
+         String termList[];
+         termList = new String[tempList.length/2];
+        String defList[];
+        defList = new String[tempList.length/2];
+        int tIdx = 0;
+        int dIdx = 0;
 		for(int x=0;x<=tempList.length-1;x++)
 		{
+		    if(x%2 == 0)
+            {
+                termList[tIdx] = tempList[x];
+                tIdx++;
+            }
+            else {
+                defList[dIdx] = defList[x];
+                dIdx++;
+            }
 
-		/*    if(x%2 == 0)
-		        termList.add(tempList[x]);
-            else
-                defList.add(tempList[x]);*/
+
 		}
 
-		System.out.println(tempList[1]);
+		System.out.println(defList[0]);
+        System.out.println(termList);
 
         //System.out.println(defList[0]);
 		/*Scanner in = new Scanner (System.in);
