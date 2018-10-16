@@ -38,7 +38,7 @@ public class ChatBotJuan
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, My name is The dude, I know all about restaurants you can get some Hispanic, American and Indian food, which cuisine do you want to learn about today?";
+		return "Hi, My name is The traveler, I know all about restaurants you can get American, Mexican and Indian food, which cuisine do you want to learn about today?";
 	}
 	
 	/**
@@ -264,15 +264,14 @@ public class ChatBotJuan
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
-	};
+	private String [] randomNeutralResponses = {"Interesting, tell me more", "Hmmm.", "Do you really think so?", "You don't say.", "It's all boolean to me.", "So, would you like to go for a walk?", "Could you say that again?"};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	
+	private String [][] NewYork = {{"Bleeker Street Pizza","69 7th Ave S, New York City, NY 10014-4043"},{"La Boina Roja","8022 37th Ave, New York City, NY 11372-6720"},{"Milon Restaurant","93 1st Ave, New York City,Ny 10003-2922"}};
+	private String [][] SanFrancisco = {{},{},{}};
+	private String [][] Miami = {};
+	private String [][]Washington = {};
+	private String [][]Seattle = {};
+	private String [] cities = new String[]{"New York City","San Francisco","Maimi","Washington D.C.","Seattle"};
+	private String [] cuisines = new String[]{"American","Mexican","Indian"};
 }
