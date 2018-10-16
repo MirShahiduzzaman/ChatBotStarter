@@ -22,7 +22,7 @@ public class ChatBotRunner
 		Scanner in = new Scanner (System.in);
 		System.out.println("Welcome to the chatbot place, nice to meet you!\nDo you want to talk to the traveler(1), the chef(2), the teacher(3), or the riddler(4)?");
 		String statement = in.nextLine();
-
+		int cuisine = 3;
 
 		while (!statement.equals("Bye"))
 		{
@@ -31,7 +31,7 @@ public class ChatBotRunner
 
 
 
-			chatbot3.chatLoop(statement);
+			chatbot3.chatLoop(statement,cuisine);
 
 
 			statement = in.nextLine();
