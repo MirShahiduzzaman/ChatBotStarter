@@ -12,6 +12,11 @@ public class ChatBotMir
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 
+	//NEED TO FINISH
+	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dogs","Philly Cheese Steak","Nachos","Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies","Butter Chicken","Tandoori Chicken","Chicken Tikka Masala","Rogan Josh","Malai Kofta","Chole","Spinach and Cottage Cheese","Black Lentils","Papdi Chaat","Naan","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey"};
+	String[][] ingredients = new String[30][30];
+	String[][] Directions = new String[30][30];
+
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -53,7 +58,7 @@ public class ChatBotMir
 	public String getResponse(String statement)
 	{
 		String response = "";
-		
+
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";

@@ -32,7 +32,7 @@ public class ChatBotSheba
         defList = new String[tempList.length/2];
         int tIdx = 0;
         int dIdx = 0;
-		for(int x=0;x<=tempList.length-1;x++)
+		for(int x=0;x<tempList.length-1;x++)
 		{
 		    if(x%2 == 0)
             {
