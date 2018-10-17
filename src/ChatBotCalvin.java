@@ -8,8 +8,9 @@ import java.util.Scanner;
  */
 public class ChatBotCalvin
 {
-	String randomA;
-	int score = 0;
+	private String randomA;
+	private int score = 0;
+	private int numberofquestions = 0;
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -18,25 +19,73 @@ public class ChatBotCalvin
 	{
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
-
-		while (!statement.equals("Bye"))
+		statement = in.nextLine();
+		intro(statement);
+		while (!statement.equals("Bye") || numberofquestions < 10)
 		{
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
 		}
+		System.out.println(yourScore());
 	}
 	/**
 	 * Get a default greeting 	
 	 * @return a greeting
-	 */	
+	 */
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hi, what is up?\nHave you talked to the other chatbots?";
+	}
+	/**
+	 * Gives a response to a user statement to the greeting
+	 *
+	 * @param statement
+	 *            the user statement
+	 * @return a response based on the rules given
+	 */
+	public String intro(String statement)
+	{
+		String response = "";
+		if (findKeyword(statement, "I had", 0) >= 0)
+		{
+			if(findKeyword(statement, "not", 0) >= 0)
+				response = transformIHadNStatement(statement);
+		}
+		else if (findKeyword(statement, "I have", 0) >= 0)
+		{
+			if(findKeyword(statement, "not", 0) >= 0)
+				response = transformIHaveNStatement(statement);
+		}
+		else if(findKeyword(statement, "no", 0) >= 0)
+		{
+			response = "No?, well then you should go talk to them first.";
+		}
+		else
+			response = "Ok, I'm going to give you a trivia now.";
+		return response;
+	}
+	/**
+	 * Gives the score at the end
+	 *
+	 * @return a the amount of question that the user got right
+	 */
+	public String yourScore()
+	{
+		String reaction = "";
+		if(score < 6)
+		{
+			reaction = "Aww too bad.\nTalk to you later bye.";
+		}
+		else
+		{
+			reaction = "Congrats. You remember what my fellow chatbots were talking about.\nTalk to you later bye.";
+		}
+		return "You got " + score + " out of " + numberofquestions + " questions correct.\n" + reaction;
 	}
 	/**
 	 * Gives a response to a user statement
-	 * 
+	 *
 	 * @param statement
 	 *            the user statement
 	 * @return a response based on the rules given
@@ -49,11 +98,7 @@ public class ChatBotCalvin
 		{
 			response = "Say something, please.";
 		}
-		else if (randomA == response)
-		{
-			response = "Correct";
-			score++;
-		}
+
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
@@ -66,18 +111,24 @@ public class ChatBotCalvin
         else if (findKeyword(statement, "I don't know the answer to", 0) >= 0)
         {
             response = transformIDontKnowTheAnswerToStatement(statement);
-
         }
 		else
 		{
-			response = getRandomResponse();
+			response = getRandomQuestions();
+		}
+		statement.toLowerCase();
+		if (randomA.equals(statement))
+		{
+			response = "Correct";
+			score++;
+			numberofquestions++;
 		}
 		return response;
 	}
 	/**
-	 * Take a statement with "I want to <something>." and transform it into 
-	 * "Why do you want to <something>?"
-	 * @param statement the user statement, assumed to contain "I want to"
+	 * Take a statement with "I don't know the answer to <something>." and transform it into
+	 * "The answer to <something> is <answer>."
+	 * @param statement the user statement, assumed to contain "I want"
 	 * @return the transformed statement
 	 */
 	private String transformIDontKnowTheAnswerToStatement(String statement)
@@ -92,10 +143,57 @@ public class ChatBotCalvin
 					.length() - 1);
 		}
 		int psn = findKeyword (statement, "I don't know the answer to", 0);
-		String restOfStatement = statement.substring(psn + 12).trim();
-		return "The answer to " + restOfStatement + " is " + randomA;
+		String restOfStatement = statement.substring(psn + 26).trim();
+		return "The answer to " + restOfStatement + " is " + randomA + ".";
 	}
-
+	/**
+	 * Take a statement with "I had <something>." and transform it into
+	 * "You had <something>?, well then you should go talk to them first."
+	 * @param statement the user statement, assumed to contain "I want to"
+	 * @return the transformed statement
+	 */
+	private String transformIHadNStatement(String statement)
+	{
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "I had", 0);
+		String restOfStatement = statement.substring(psn + 5).trim();
+		return "You had " + restOfStatement + "?, well then you should go talk to them first.";
+	}
+	/**
+	 * Take a statement with "I have <something>." and transform it into
+	 * "You have <something>?, well then you should go talk to them first."
+	 * @param statement the user statement, assumed to contain "I want to"
+	 * @return the transformed statement
+	 */
+	private String transformIHaveNStatement(String statement)
+	{
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "I have", 0);
+		String restOfStatement = statement.substring(psn + 6).trim();
+		return "You have " + restOfStatement + "?, well then you should go talk to them first.";
+	}
+	/**
+	 * Take a statement with "I want to <something>." and transform it into
+	 * "Why do you want to <something>?"
+	 * @param statement the user statement, assumed to contain "I want to"
+	 * @return the transformed statement
+	 */
     private String transformIWantToStatement(String statement)
     {
         //  Remove the final period, if there is one
@@ -235,13 +333,14 @@ public class ChatBotCalvin
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
 	 */
-	private String getRandomResponse ()
+	private String getRandomQuestions ()
 	{
 		Random r = new Random ();
 		String randomQ = randomQuestions [r.nextInt(randomQuestions.length)];
 		randomA = randomAnswers [r.nextInt(randomAnswers.length)];
 		return randomQ;
 	}
+
 	private String [] randomQuestions = {"fries made in ...?", "pizza?", "food?"};
 	private String [] randomAnswers = {"fries made in ...?", "pizza?", "food?"};
 }
