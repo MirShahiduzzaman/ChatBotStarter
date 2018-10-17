@@ -55,8 +55,12 @@ public class ChatBotSheba
         termList = new String[tempList.length/2];
         defList = new String[tempList.length/2];
        makearray(tempList,termList,defList);
-       System.out.print(defList[0]);
-        System.out.print(termList[0]);
+        String americanTerm[];
+        String americanDef[];
+        String [] tempList = wordList.split(";");
+        termList = new String[tempList.length/2];
+        defList = new String[tempList.length/2];
+        makearray(tempList,termList,defList);
 
         if(cuisine == 1)
         {
