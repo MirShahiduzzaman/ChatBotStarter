@@ -72,7 +72,16 @@ public class ChatBotCalvin
 	 */
 	public String yourScore()
 	{
-		return "You got " + score + " out of " + numberofquestions + " questions correct." + score/numberofquestions;
+		String reaction = "";
+		if(score < 6)
+		{
+			reaction = "Aww too bad.\nTalk to you later bye.";
+		}
+		else
+		{
+			reaction = "Congrats. You remember what my fellow chatbots were talking about.\nTalk to you later bye.";
+		}
+		return "You got " + score + " out of " + numberofquestions + " questions correct.\n" + reaction;
 	}
 	/**
 	 * Gives a response to a user statement
@@ -105,9 +114,10 @@ public class ChatBotCalvin
         }
 		else
 		{
-			response = getRandomResponse();
+			response = getRandomQuestions();
 		}
-		if (randomA == response)
+		statement.toLowerCase();
+		if (randomA.equals(statement))
 		{
 			response = "Correct";
 			score++;
@@ -323,13 +333,14 @@ public class ChatBotCalvin
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
 	 */
-	private String getRandomResponse ()
+	private String getRandomQuestions ()
 	{
 		Random r = new Random ();
 		String randomQ = randomQuestions [r.nextInt(randomQuestions.length)];
 		randomA = randomAnswers [r.nextInt(randomAnswers.length)];
 		return randomQ;
 	}
+
 	private String [] randomQuestions = {"fries made in ...?", "pizza?", "food?"};
 	private String [] randomAnswers = {"fries made in ...?", "pizza?", "food?"};
 }
