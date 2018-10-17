@@ -13,9 +13,25 @@ public class ChatBotMir
 	int emotion = 0;
 
 	//NEED TO FINISH
-	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dogs","Philly Cheese Steak","Nachos","Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies","Butter Chicken","Tandoori Chicken","Chicken Tikka Masala","Rogan Josh","Malai Kofta","Chole","Spinach and Cottage Cheese","Black Lentils","Papdi Chaat","Naan","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey","Roast Turkey"};
+	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dogs","Philly Cheese Steak","Nachos","Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies","Butter Chicken","Tandoori Chicken","Chicken Tikka Masala","Rogan Josh","Malai Kofta","Chole","Spinach and Cottage Cheese","Black Lentils","Papdi Chaat","Naan","Tamales","Vaca Frita","Hispanic Tilapia and Rice Bowl","Shrimp Diabla","Shrimp Ceviche","Black Bean Plantain Empanadas","Fried Yuca Strips","Polvorones de Limón","Latin burger","Cuban beef picadillo"};
 	String[][] ingredients = new String[30][30];
 	String[][] Directions = new String[30][30];
+
+
+
+	public void inputIngred(String[][] arr)
+	{
+		String allIng = "1/4 pound (1 stick) unsalted butter,1 lemon, zested and juiced,1 teaspoon chopped fresh thyme leaves,1 fresh turkey (10 to 12 pounds),Kosher salt,Freshly ground black pepper,1 large bunch fresh thyme,1 whole lemon,halved,1 Spanish onion, quartered,1 head garlic,halved crosswise; ";
+		for(int i = 0; i<arr.length; i++)
+		{
+			arr[i] = allIng.split(",");
+		}
+		System.out.println(arr[0][0]);
+		System.out.println(arr[0][1]);
+		System.out.println(arr[1][0]);
+		System.out.println(arr[1][1]);
+	}
+
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -26,6 +42,7 @@ public class ChatBotMir
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
 
+		inputIngred(ingredients);
 
 		while (!statement.equals("Bye"))
 		{

@@ -25,7 +25,7 @@ public class ChatBotSheba
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
 	 */
-	public void chatLoop(String statement int cuisine)
+	public void chatLoop(String statement, int cuisine)
 	{
         String [] tempList = wordList.split(";");
          String termList[];
@@ -51,7 +51,7 @@ public class ChatBotSheba
 
         if(cuisine == 1)
         {
-            System.out.println("Cooking is so much fun but it can be difficult to read recipes due to the strange vocabulary. You like American food, so do you know what " + chosenWord + " means?");
+            //System.out.println("Cooking is so much fun but it can be difficult to read recipes due to the strange vocabulary. You like American food, so do you know what " + chosenWord + " means?");
         }
         else if (cuisine == 2)
         {
