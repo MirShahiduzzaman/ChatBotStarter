@@ -81,7 +81,6 @@ public class ChatBotSheba
 			chosenFood = iTerm[randIdx];
 			chosenFoodDef = iDef[randIdx];
 
-
 		} else {
 			chosenWord = "all kinds of foods";
 			randIdx = (int) Math.round(Math.random() * (termList.length - 1));
@@ -92,23 +91,24 @@ public class ChatBotSheba
 
 		Scanner input = new Scanner(System.in);
 		String found = "";
-		while(input.nextInt() != 3) {
-			if (input.nextInt() == 1) {
+		String userInput = input.nextLine();
+		while(!userInput.equals("3")) {
+            if (userInput.equals("1")) {
 				System.out.println("So do you know what " + chosenFood + " means?");
-				Scanner answer = new Scanner(System.in);
-				if (answer.nextLine().toLowerCase().equals("no")) {
+				userInput = input.nextLine();
+				if (userInput.toLowerCase().equals("no")) {
 					System.out.println(chosenFood + ": " + chosenFoodDef);
-				} else if (answer.nextLine().toLowerCase().equals("yes")) {
+				} else if (userInput.toLowerCase().equals("yes")) {
 					System.out.println(generatePositiveComment(pos));
 				} else {
 					System.out.println("I'll take that as a no... " + chosenFood + " : " + chosenFoodDef);
 				}
 			}
-			else if (input.nextInt() == 2)
+			else if (userInput.equals("2"))
 			{
 				System.out.println("Type in a word and lets see if I know the answer");
-				Scanner userWord = new Scanner(System.in);
-				found = find(userWord.nextLine(), termList,defList,aTerm,aDef,iTerm,iDef,mTerm,mDef,pos);
+                userInput = input.nextLine();
+				found = find(userInput, termList,defList,aTerm,aDef,iTerm,iDef,mTerm,mDef,pos);
 				System.out.println(found);
 				System.out.println("press 33 anytime to leave");
 			}
@@ -182,8 +182,6 @@ public String find(String word, String[]listOne,String[] oneDef,String[]listTwo,
 		}
 	public static void makearray (String[] list, String[] listOne, String[] listTwo)
     {
-		System.out.println(list.length);
-
 		int idxOne = 0;
         int idxTwo = 0;
         if(list.length % 2 == 0) {
