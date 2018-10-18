@@ -98,7 +98,12 @@ public class ChatBotSheba
 				userInput = input.nextLine();
 				if (userInput.toLowerCase().equals("no")) {
 					System.out.println(chosenFood + ": " + chosenFoodDef);
-				} else if (userInput.toLowerCase().equals("yes")) {
+                    System.out.println("want another word (press 1) or type a word you want the defenition to. If I know what it means I'll tell you");
+                    if(input.nextLine().equals("1"))
+                    {
+
+                    }
+                } else if (userInput.toLowerCase().equals("yes")) {
 					System.out.println(generatePositiveComment(pos));
 				} else {
 					System.out.println("I'll take that as a no... " + chosenFood + " : " + chosenFoodDef);
