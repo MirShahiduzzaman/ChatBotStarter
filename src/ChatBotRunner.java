@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -21,21 +20,24 @@ public class ChatBotRunner
 		
 
 		Scanner in = new Scanner (System.in);
-		System.out.println("Welcome to the chatbot place, nice to meet you!\nDo you want to talk to the traveler(1), the American chef(2), the teacher(3), or the riddler(4)?");
+		System.out.println("Welcome to the chatbot place, nice to meet you!\nDo you want to talk to the traveler(1), the chef(2), the teacher(3), or the riddler(4)?");
 		String statement = in.nextLine();
 
-			while (!statement.equals("Bye")) {
-				//Use Logic to control which chatbot is handling the conversation\
-				//This example had only chatbot1
+
+		while (!statement.equals("Bye"))
+		{
+			//Use Logic to control which chatbot is handling the conversation\
+			//This example had only chatbot1
 
 
-				chatbot2.chatLoop(statement);
+
+			chatbot3.chatLoop(statement,2);
 
 
-				statement = in.nextLine();
+			statement = in.nextLine();
 
 
-			}
+		}
 		in.close();
 	}
 
