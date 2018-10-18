@@ -8,24 +8,31 @@ import java.util.Scanner;
  */
 public class ChatBotCalvin
 {
+	/**
+	 * Stores variables that is used throughout the program.
+	 */
 	private String randomA;
+	private String randomQ;
 	private int score = 0;
 	private int numberofquestions = 0;
+	private int type = 1;
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
 	 */
-	public void chatLoop(String statement)
+	public void chatLoop(String statement, int cuisine)
 	{
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
 		statement = in.nextLine();
 		intro(statement);
+		type = cuisine;
 		while (!statement.equals("Bye") || numberofquestions < 10)
 		{
+			System.out.println(getQ(statement));
 			statement = in.nextLine();
 			//getResponse handles the user reply
-			System.out.println(getResponse(statement));
+			afterQ(statement);
 		}
 		System.out.println(yourScore());
 	}
@@ -65,6 +72,27 @@ public class ChatBotCalvin
 			response = "Ok, I'm going to give you a trivia now.";
 		return response;
 	}
+
+	public String afterQ(String statement)
+	{
+		String response = "";
+		statement.toLowerCase();
+		if (randomA.equals(statement))
+		{
+			response = "Correct!";
+			score++;
+			numberofquestions++;
+		}
+		else
+		{
+			response = "Wrong. The correct answer is " + randomA + ".";
+		}
+		if (statement.length() == 0)
+		{
+			response = "Your not talking? Well I'll count that as you got it wrong.";
+		}
+		return response;
+	}
 	/**
 	 * Gives the score at the end
 	 *
@@ -90,10 +118,9 @@ public class ChatBotCalvin
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
-	public String getResponse(String statement)
+	public String getQ(String statement)
 	{
 		String response = "";
-
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
@@ -115,13 +142,6 @@ public class ChatBotCalvin
 		else
 		{
 			response = getRandomQuestions();
-		}
-		statement.toLowerCase();
-		if (randomA.equals(statement))
-		{
-			response = "Correct";
-			score++;
-			numberofquestions++;
 		}
 		return response;
 	}
@@ -336,11 +356,33 @@ public class ChatBotCalvin
 	private String getRandomQuestions ()
 	{
 		Random r = new Random ();
-		String randomQ = randomQuestions [r.nextInt(randomQuestions.length)];
-		randomA = randomAnswers [r.nextInt(randomAnswers.length)];
+		if(type == 1)
+		{
+			// American
+			randomQ = randomQuestionsAmerican[r.nextInt(randomQuestionsAmerican.length)];
+			randomA = randomAnswersAmerican[r.nextInt(randomAnswersAmerican.length)];
+		}
+		if(type == 2)
+		{
+			// Mexican
+			randomQ = randomQuestionsMexican[r.nextInt(randomQuestionsMexican.length)];
+			randomA = randomAnswersMexican[r.nextInt(randomAnswersMexican.length)];
+		}
+		if(type == 3)
+		{
+			// Indian
+			randomQ = randomQuestionsIndian[r.nextInt(randomQuestionsIndian.length)];
+			randomA = randomAnswersIndian[r.nextInt(randomAnswersIndian.length)];
+		}
 		return randomQ;
 	}
-
-	private String [] randomQuestions = {"fries made in ...?", "pizza?", "food?"};
-	private String [] randomAnswers = {"fries made in ...?", "pizza?", "food?"};
+	/**
+	 * Creates an array of questions and answers for 3 cuisines.
+	 */
+	private String [] randomQuestionsAmerican = {"Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
+	private String [] randomAnswersAmerican = {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
+	private String [] randomQuestionsMexican = {"Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
+	private String [] randomAnswersMexican = {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
+	private String [] randomQuestionsIndian = {"Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
+	private String [] randomAnswersIndian = {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
 }
