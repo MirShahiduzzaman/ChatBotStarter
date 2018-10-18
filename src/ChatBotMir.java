@@ -1,3 +1,4 @@
+//Mir
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class ChatBotMir
 	int emotion = 0;
 
 	//NEED TO FINISH
-	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dogs","Philly Cheese Steak","Nachos","Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies","Butter Chicken","Tandoori Chicken","Chicken Tikka Masala","Rogan Josh","Malai Kofta","Chole","Spinach and Cottage Cheese","Black Lentils","Papdi Chaat","Naan","Tamales","Vaca Frita","Hispanic Tilapia and Rice Bowl","Shrimp Diabla","Shrimp Ceviche","Black Bean Plantain Empanadas","Fried Yuca Strips","Polvorones de Limón","Latin burger","Cuban beef picadillo"};
+	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dogs","Philly Cheese Steak","Nachos","Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies"};
 
 	String[] ingredients = 	{
 			"1 (16 pound) whole turkey, neck and giblets removed\n","1/4 cup extra-virgin olive oil", "1 teaspoon salt","1/2 teaspoon ground black pepper","1 teaspoon ground thyme1 cup honey","1/2 cup melted butter","2 teaspoons dried sage leaves","1 tablespoon minced fresh parsley","1 teaspoon dried basil","1 teaspoon salt","1 teaspoon ground black pepper",
@@ -27,9 +28,14 @@ public class ChatBotMir
 
 			"1 (12-ounce) flank steak, trimmed","1/4 teaspoon kosher salt","1/4 teaspoon freshly ground black pepper","2 (5-inch) portobello mushroom caps","2 teaspoons extra-virgin olive oil, divided","1 cup thinly sliced onion","1 1/2 cups thinly sliced green bell pepper","2 teaspoons minced garlic","1/2 teaspoon Worcestershire sauce","1/2 teaspoon lower-sodium soy sauce","2 teaspoons all-purpose flour","1/2 cup 1% low-fat milk","1 ounce provolone cheese, torn into small pieces","2 tablespoons grated Parmigiano-Reggiano cheese","1/4 teaspoon dry mustard","4 (3-ounce) hoagie rolls, toasted",
 
-			"1 pound ground beef", "1 (1.25 ounce) package taco seasoning mix", "3/4 cup water", "1 (18 ounce) " +
-					"package ", "restaurant-style tortilla chips", "1 cup shredded sharp Cheddar cheese, or more to " +
-					"taste", "1 (15.5 ounce) can refried beans", "1 cup sour cream, or more to taste", "Friendship " +
+			"1 pound ground beef\n"+
+					"1 (1.25 ounce) package taco seasoning mix\n"+
+					"3/4 cup water\n"+
+					"1 (18 ounce) package restaurant-style tortilla chips\n"+
+					"1 cup shredded sharp Cheddar cheese, or more to taste\n"+
+					"1 (15.5 ounce) can refried beans\n"+
+					"1 cup sour cream, or more to taste\n"+
+					"Friendship " +
 					"Sour Cream 16 Oz","1 (10 ounce) can pitted black olives, drained and chopped","4 green onions," +
 					" diced","1 (4 ounce) can sliced jalapeno peppers, drained",
 

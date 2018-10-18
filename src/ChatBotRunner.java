@@ -1,3 +1,4 @@
+//Mir
 import java.util.Scanner;
 
 /**
@@ -31,7 +32,7 @@ public class ChatBotRunner
 
 
 
-			chatbot3.chatLoop(statement,2);
+			chatbot2.chatLoop(statement);
 
 
 			statement = in.nextLine();
