@@ -14,22 +14,89 @@ public class ChatBotMir
 
 	//NEED TO FINISH
 	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dogs","Philly Cheese Steak","Nachos","Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies","Butter Chicken","Tandoori Chicken","Chicken Tikka Masala","Rogan Josh","Malai Kofta","Chole","Spinach and Cottage Cheese","Black Lentils","Papdi Chaat","Naan","Tamales","Vaca Frita","Hispanic Tilapia and Rice Bowl","Shrimp Diabla","Shrimp Ceviche","Black Bean Plantain Empanadas","Fried Yuca Strips","Polvorones de Limón","Latin burger","Cuban beef picadillo"};
-	String[][] ingredients = new String[30][30];
-	String[][] Directions = new String[30][30];
 
+	String[][] ingredients = 	{
+			{"1 (16 pound) whole turkey, neck and giblets removed","1/4 cup extra-virgin olive oil", "1 teaspoon salt","1/2 teaspoon ground black pepper","1 teaspoon ground thyme1 cup honey","1/2 cup melted butter","2 teaspoons dried sage leaves","1 tablespoon minced fresh parsley","1 teaspoon dried basil","1 teaspoon salt","1 teaspoon ground black pepper"},
+
+			{"2 pounds freshly ground chuck, (at least 80% lean, a.k.a. 80/20)", "1 tablespoon onion powder", "1 teaspoon salt","1 teaspoon freshly ground black pepper","12 slices deli-counter American cheese","6 large burger buns, preferably homemade, toasted if desired","Any ingredient for garnishing"},
+
+			{"2 tablespoons butter","8 slices rye bread", "8 slices deli sliced corned beef", "8 slices Swiss cheese", "1 cup sauerkraut, drained","1/2 cup Thousand Island dressing"},
+
+			{"4 hot dog buns", "2 tbsp. butter, softened", "1/4 tsp. garlic powder", "1/4 tsp. onion powder", "4 hot " +
+					"dogs, split lengthwise (be careful not to cut all the way through)", "3 c. shredded cheddar", "4 Green onions, sliced"},
+
+			{"1 (12-ounce) flank steak, trimmed","1/4 teaspoon kosher salt","1/4 teaspoon freshly ground black pepper","2 (5-inch) portobello mushroom caps","2 teaspoons extra-virgin olive oil, divided","1 cup thinly sliced onion","1 1/2 cups thinly sliced green bell pepper","2 teaspoons minced garlic","1/2 teaspoon Worcestershire sauce","1/2 teaspoon lower-sodium soy sauce","2 teaspoons all-purpose flour","1/2 cup 1% low-fat milk","1 ounce provolone cheese, torn into small pieces","2 tablespoons grated Parmigiano-Reggiano cheese","1/4 teaspoon dry mustard","4 (3-ounce) hoagie rolls, toasted"},
+
+			{"1 pound ground beef", "1 (1.25 ounce) package taco seasoning mix", "3/4 cup water", "1 (18 ounce) " +
+					"package ", "restaurant-style tortilla chips", "1 cup shredded sharp Cheddar cheese, or more to " +
+					"taste", "1 (15.5 ounce) can refried beans", "1 cup sour cream, or more to taste", "Friendship " +
+					"Sour Cream 16 Oz","1 (10 ounce) can pitted black olives, drained and chopped","4 green onions," +
+					" diced","1 (4 ounce) can sliced jalapeno peppers, drained"},
+
+			{"3 and 1/4 cups all-purpose flour", "1/2 cup yellow cornmeal", "1 and 1/4 teaspoons salt", "1 Tablespoon" +
+					" granulated sugar", "2 and 1/4 teaspoons Red Star Platinum yeast (1 standard packet)", "1 and " +
+					"1/4 cups slightly warm water", "1/2 cup unsalted butter, divided (1/4 cup melted, 1/4 cup " +
+					"softened)", "olive oil for coating","2 Tablespoons unsalted butter", "1 small onion, grated " +
+					"(about 1/3 cup)1", "3/4 teaspoon salt", "1 teaspoon dried oregano", "1/2 teaspoon crushed red " +
+					"pepper flakes (optional, but recommended)", "3 garlic cloves, minced", "one 28-ounce can crushed" +
+					" tomatoes","1 1/4 teaspoon granulated sugar","4 cups shredded mozzarella cheese2","1/2 cup grated parmesan cheese", "Optional:Toppings"},
+
+			{"1/2 cup olive oil","1/4 cup Worcestershire sauce","6 tablespoons soy sauce","1/4 cup minced " +
+					"garlic","1/2 medium onion, chopped","2 tablespoons salt","1 tablespoon pepper","1 " +
+					"tablespoon crushed dried rosemary","3 tablespoons steak seasoning","3 tablespoons steak sauce (e" +
+					".g. A-1)","4 (10 ounce) Delmonico (rib-eye) steaks"},
+
+			{"3 cups fresh blueberries\n" +
+					"3 tablespoons white sugar\n" +
+					"1/3 cup orange juice\n" +
+					"2/3 cup all-purpose flour\n" +
+					"1/4 teaspoon baking powder\n" +
+					"1 pinch salt\n" +
+					"1/2 cup butter, softened\n" +
+					"1/2 cup white sugar\n" +
+					"1 egg\n" +
+					"1/2 teaspoon vanilla extract\n"},
+
+			{"3 cups all-purpose flour\n" +
+					"2 cups semisweet chocolate chips\n" +
+					"1 cup chopped walnuts\n" +
+					"1 cup butter, softened\n" +
+					"1 cup white sugar\n" +
+					"1 cup packed brown sugar\n" +
+					"2 eggs\n" +
+					"2 teaspoons vanilla extract\n" +
+					"1 teaspoon baking soda\n" +
+					"2 teaspoons hot water\n" +
+					"1/2 teaspoon salt\n"}
+								};
+
+
+	String[][] Directions = new String[30][30];
 
 
 	public void inputIngred(String[][] arr)
 	{
-		String allIng = "1/4 pound (1 stick) unsalted butter,1 lemon, zested and juiced,1 teaspoon chopped fresh thyme leaves,1 fresh turkey (10 to 12 pounds),Kosher salt,Freshly ground black pepper,1 large bunch fresh thyme,1 whole lemon,halved,1 Spanish onion, quartered,1 head garlic,halved crosswise; ";
-		for(int i = 0; i<arr.length; i++)
+		String allIng = "1/4 pound (1 stick) unsalted butter:1 lemon, zested and juiced:1 teaspoon chopped fresh " +
+				"thyme leaves:1 fresh turkey (10 to 12 pounds):Kosher salt:Freshly ground black pepper:1 large bunch " +
+				"fresh thyme:1 whole lemon,halved:1 Spanish onion, quartered:1 head garlic,halved crosswise;hi:buy:bye";
+
+		String[][] final1 = new String[30][30];
+
+		String[] temp = allIng.split(";");
+
+		for(int i = 0; i<temp.length; i++)
 		{
-			arr[i] = allIng.split(",");
+			final1[0] = temp[i].split(":");
 		}
-		System.out.println(arr[0][0]);
-		System.out.println(arr[0][1]);
-		System.out.println(arr[1][0]);
-		System.out.println(arr[1][1]);
+
+		for(int i = 0; i<temp.length; i++)
+		{
+			final1[0] = temp[i].split(":");
+		}
+		System.out.println(final1[0][0]);
+		System.out.println(final1[0][1]);
+		System.out.println(temp[0]);
+		System.out.println(temp[1]);
 	}
 
 

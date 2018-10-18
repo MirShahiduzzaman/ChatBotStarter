@@ -55,7 +55,7 @@ public class ChatBotSheba
 		{
 
 
-			statement = in.nextLine();
+			//statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
 
