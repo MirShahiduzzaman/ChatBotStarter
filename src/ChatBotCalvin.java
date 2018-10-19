@@ -1,5 +1,9 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Arrays;
+import org.apache.commons.lang3.ArrayUtils;
+//Download for ArrayUtils to work
+//http://commons.apache.org/proper/commons-net/download_net.cgi
 /**
  * A program to carry on conversations with a human user.
  * This version:
@@ -13,8 +17,8 @@ public class ChatBotCalvin
 	 */
 	private String randomA;
 	private String randomQ;
-	private int score = 0;
-	private int numberofquestions = 0;
+	private int score;
+	private int numberofquestions;
 	private int type = 1;
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -25,14 +29,16 @@ public class ChatBotCalvin
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
 		statement = in.nextLine();
-		intro(statement);
+		System.out.println(intro(statement));
+		score = 0;
+		numberofquestions = 0;
 		type = cuisine;
-		while (!statement.equals("Bye") || numberofquestions < 10)
+		while (!statement.equals("Bye") && numberofquestions < 10)
 		{
 			System.out.println(getQ(statement));
 			statement = in.nextLine();
 			//getResponse handles the user reply
-			afterQ(statement);
+			System.out.println(afterQ(statement));
 		}
 		System.out.println(yourScore());
 	}
@@ -42,7 +48,7 @@ public class ChatBotCalvin
 	 */
 	public String getGreeting()
 	{
-		return "Hi, what is up?\nHave you talked to the other chatbots?";
+		return "Hello, I am the riddler. \nHave you talked to the other chatbots?";
 	}
 	/**
 	 * Gives a response to a user statement to the greeting
@@ -77,11 +83,10 @@ public class ChatBotCalvin
 	{
 		String response = "";
 		statement.toLowerCase();
-		if (randomA.equals(statement))
+		if (statement.equals(randomA))
 		{
 			response = "Correct!";
 			score++;
-			numberofquestions++;
 		}
 		else
 		{
@@ -91,6 +96,7 @@ public class ChatBotCalvin
 		{
 			response = "Your not talking? Well I'll count that as you got it wrong.";
 		}
+		numberofquestions++;
 		return response;
 	}
 	/**
@@ -356,33 +362,40 @@ public class ChatBotCalvin
 	private String getRandomQuestions ()
 	{
 		Random r = new Random ();
+		int num = r.nextInt(randomQuestionsAmerican.length);
 		if(type == 1)
 		{
 			// American
-			randomQ = randomQuestionsAmerican[r.nextInt(randomQuestionsAmerican.length)];
-			randomA = randomAnswersAmerican[r.nextInt(randomAnswersAmerican.length)];
+			randomQ = randomQuestionsAmerican[num];
+			randomA = randomAnswersAmerican[num];
+			randomQuestionsAmerican = ArrayUtils.removeElement(randomQuestionsAmerican, randomQuestionsAmerican[num]);
+			randomAnswersAmerican = ArrayUtils.removeElement(randomAnswersAmerican, randomAnswersAmerican[num]);
 		}
 		if(type == 2)
 		{
 			// Mexican
-			randomQ = randomQuestionsMexican[r.nextInt(randomQuestionsMexican.length)];
-			randomA = randomAnswersMexican[r.nextInt(randomAnswersMexican.length)];
+			randomQ = randomQuestionsMexican[num];
+			randomA = randomAnswersMexican[num];
+			randomQuestionsMexican = ArrayUtils.removeElement(randomQuestionsMexican, randomQuestionsMexican[num]);
+			randomAnswersMexican = ArrayUtils.removeElement(randomAnswersMexican, randomAnswersMexican[num]);
 		}
 		if(type == 3)
 		{
 			// Indian
-			randomQ = randomQuestionsIndian[r.nextInt(randomQuestionsIndian.length)];
-			randomA = randomAnswersIndian[r.nextInt(randomAnswersIndian.length)];
+			randomQ = randomQuestionsIndian[num];
+			randomA = randomAnswersIndian[num];
+			randomQuestionsIndian = ArrayUtils.removeElement(randomQuestionsIndian, randomQuestionsIndian[num]);
+			randomAnswersIndian = ArrayUtils.removeElement(randomAnswersIndian, randomAnswersIndian[num]);
 		}
 		return randomQ;
 	}
 	/**
 	 * Creates an array of questions and answers for 3 cuisines.
 	 */
-	private String [] randomQuestionsAmerican = {"Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
-	private String [] randomAnswersAmerican = {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
-	private String [] randomQuestionsMexican = {"Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
-	private String [] randomAnswersMexican = {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
-	private String [] randomQuestionsIndian = {"Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
-	private String [] randomAnswersIndian = {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
+	private String [] randomQuestionsAmerican = {"What word means, to make a crisscross pattern on the outside of grilled or broiled food?.", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
+	private String [] randomAnswersAmerican = {"Quadriller", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
+	private String [] randomQuestionsMexican = {"What word means, a mashed up preparation of avocado that literally means avocado sauce?", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
+	private String [] randomAnswersMexican = {"Guacamole", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
+	private String [] randomQuestionsIndian = {"What is a dish with layers of meat called?", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
+	private String [] randomAnswersIndian = {"biryani", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
 }
