@@ -258,7 +258,7 @@ public class ChatBotMir
 		{
 			response = transformIYouStatement(statement);
 		}
-		else
+		else if(statement.length()>0)
 		{
 			getRandomResponse();
 		}
