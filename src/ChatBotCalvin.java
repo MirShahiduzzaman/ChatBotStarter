@@ -1,3 +1,4 @@
+//Calvin Lam
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -127,13 +128,9 @@ public class ChatBotCalvin
 	public String getQ(String statement)
 	{
 		String response = "";
-		if (statement.length() == 0)
-		{
-			response = "Say something, please.";
-		}
 
 		// Response transforming I want to statement
-		else if (findKeyword(statement, "I want to", 0) >= 0)
+		if (findKeyword(statement, "I want to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
 		}
