@@ -23,7 +23,8 @@ public class ChatBotRunner
 
 		Scanner in = new Scanner (System.in);
 		// Get the chatbot that user chooses
-		System.out.println("Welcome to the chatbot place, nice to meet you!\nDo you want to talk to the traveler(1), the chef(2), the teacher(3), or the riddler(4)?");
+		System.out.println("Welcome to the chatbot place, nice to meet you!\nDo you want to talk to the Traveler(1), " +
+				"the American Chef(2), the Teacher(3), or the Riddler(4)?");
 		String statement = in.nextLine();
 		if (statement.equals("1") || statement.equals("traveler") || statement.equals("the traveler"))
 		{

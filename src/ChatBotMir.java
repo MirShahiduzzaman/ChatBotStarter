@@ -120,7 +120,7 @@ public class ChatBotMir
 					"1/2 cup butter, softened\n" +
 					"1/2 cup white sugar\n" +
 					"1 egg\n" +
-					"1/2 teaspoon vanilla extract\n",
+					"1/2 teaspoon vanilla extract",
 
 			"3 cups all-purpose flour\n" +
 					"2 cups semisweet chocolate chips\n" +
@@ -136,10 +136,7 @@ public class ChatBotMir
 								};
 
 
-	String[][] Directions = {	{},{},{},{}
-
-
-	};
+	String[][] Directions = {};
 
 
 	/**
@@ -219,7 +216,7 @@ public class ChatBotMir
 		}
 		else
 		{
-			System.out.println("I don't know that recipe.");
+			getRandomResponse();
 		}
 		
 		return response;
@@ -319,7 +316,35 @@ public class ChatBotMir
 		//if(restOfStatement )
 	}
 
-	
+	private String transformFoodStatement(String statement)
+	{
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		String chosenFood = null;
+
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		for(int i=0;i<foods.length;i++)
+		{
+			int psn = findKeyword(statement, foods[i], 0);
+			if (psn >= 0)
+			{
+				emotion++;
+				chosenFood = foods[i].trim();
+				i = foods.length;
+				return "Here's the ingredients for " + chosenFood + ":\n" + ingredients[i];
+			}
+		}
+		emotion--;
+		return "I don't think you looked at the options menu";
+	}
+
+
 	
 	/**
 	 * Search for one word in phrase. The search is not case
@@ -422,11 +447,13 @@ public class ChatBotMir
 			"Hmmm.",
 			"Do you really think so?",
 			"You don't say.",
-			"It's all boolean to me.",
+			"It's all a bunch of words to me.",
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"You make me so angry sometimes.", "I don't like how you act", "Mak " +
+			"that yourself!"};
+	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "I like that", "You make me feel like " +
+			"a brand new pair of shoes."};
 	
 }
