@@ -12,11 +12,16 @@ public class ChatBotMir
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
+	boolean contQuest = false;
+	String chosenFood = null;
+	int idx = 0;
 
 	//The foods that the chef will talk about - there is an options menu that will display this list
 	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dog","Philly Cheese Steak","Nachos",
 			"Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookie"};
 
+	//ingredients each match up with the respective food on each index
+	//Ex: roast turkey matches up with ingredients[0]
 	String[] ingredients = 	{
 			"1 (16 pound) whole turkey, neck and giblets removed\n"+
 					"1/4 cup extra-virgin olive oil\n"+
@@ -135,8 +140,9 @@ public class ChatBotMir
 					"1/2 teaspoon salt"
 								};
 
-
-	String[] Directions = {"https://www.allrecipes.com/recipe/212677/herb-glazed-roasted-turkey/", "http://www" +
+	//directions - array of websites where I got the recipes. The websites explain the steps to making the selected
+	// food item
+	String[] directions = {"https://www.allrecipes.com/recipe/212677/herb-glazed-roasted-turkey/", "http://www" +
 			".foodrepublic.com/recipes/all-american-cheeseburger-recipe/", "https://www.allrecipes" +
 			".com/recipe/47717/reuben-sandwich-ii/", "https://www.allrecipes" +
 			".com/recipe/154209/quick-garlic-breadsticks/", "https://www.myrecipes.com/recipe/philly-cheesesteak-0",
@@ -173,8 +179,8 @@ public class ChatBotMir
 	 */	
 	public String getGreeting()
 	{
-		return "Hey, wasup? What food recipe do you want to learn about? Don't forget to include 'recipe' in your " +
-				"sentence!\nAlso, you can type 'options' to learn about what foods I can give you info on.";
+		return "Hey, how's it going? I'm the American chef. What food recipe do you want to learn about? Don't forget" +
+				" to include 'recipe' in your sentence!\nAlso, you can type 'options' to learn about what foods I can give you info on.";
 	}
 	
 	/**
@@ -190,6 +196,29 @@ public class ChatBotMir
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
+		}
+		else if(contQuest)
+		{
+			if(findKeyword(statement, "yes",0) >= 0)
+			{
+				response = "Great! Just follow the directions at " + directions[idx] + "and then type another food " +
+						"recipe you want to learn about";
+			}
+			else
+			{
+				String rand = Math.random()*10 + "";
+				int randInt = Integer.parseInt(rand.substring(0,1));
+
+				while(randInt == idx)
+				{
+					rand = Math.random()*10 + "";
+					randInt = Integer.parseInt(rand.substring(0,1));
+				}
+
+				response =
+						"Oh well. What other recipe do you want to learn about? I recommend the " + foods[randInt];
+			}
+			contQuest = false;
 		}
 		else if(findKeyword(statement, "options",0) >= 0)
 		{
@@ -238,7 +267,9 @@ public class ChatBotMir
 	}
 
 	/**
-	 * prints out list of foods American chef knows about
+	 * Method to help display list of foods
+	 *
+	 * @return a string with the list of foods the American chef bot knows about
 	 */
 	private String findOpts()
 	{
@@ -347,7 +378,7 @@ public class ChatBotMir
 	 * returns list of ingredients needed for a certain food
 	 * gives link to website for directions and more info
 	 *
-	 * works even if user inputs s after the food item
+	 * works even if user inputs s after the listed food item name
 	 *
 	 * @param statement the user statement, check when statement has "recipe for" or "recipe"
 	 * @return the transformed statement
@@ -358,7 +389,6 @@ public class ChatBotMir
 		statement = statement.trim();
 		String lastChar = statement.substring(statement
 				.length() - 1);
-		String chosenFood = null;
 
 		if (lastChar.equals("."))
 		{
@@ -374,7 +404,10 @@ public class ChatBotMir
 				emotion++;
 				chosenFood = foods[i].trim();
 				i = foods.length;
-				return "Here's the ingredients for " + chosenFood + ":\n" + ingredients[i];
+				contQuest = true;
+				idx = i;
+				return "Here's the ingredients for " + chosenFood + ":\n" + ingredients[i] + "\n\nDo you want the " +
+						"directions?";
 			}
 		}
 		emotion--;
