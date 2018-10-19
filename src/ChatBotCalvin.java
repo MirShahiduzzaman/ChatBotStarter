@@ -18,6 +18,7 @@ public class ChatBotCalvin
 	private int score;
 	private int numberofquestions;
 	private int type = 1;
+	private int num = 0;
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -30,6 +31,7 @@ public class ChatBotCalvin
 		System.out.println(intro(statement));
 		score = 0;
 		numberofquestions = 0;
+		num = 0;
 		type = cuisine;
 		while (!statement.equals("Bye") && numberofquestions < 10)
 		{
@@ -355,8 +357,7 @@ public class ChatBotCalvin
 	 */
 	private String getRandomQuestions ()
 	{
-		Random r = new Random ();
-		int num = r.nextInt(randomQuestionsAmerican.length);
+
 		if(type == 1)
 		{
 			// American
@@ -377,6 +378,7 @@ public class ChatBotCalvin
 			randomQ = randomQuestionsIndian[num];
 			randomA = randomAnswersIndian[num];
 		}
+		num++;
 		return randomQ;
 	}
 	/**
