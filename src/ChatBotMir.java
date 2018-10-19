@@ -508,7 +508,11 @@ public class ChatBotMir
 			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
 		}
 		if (emotion < 0)
-		{	
+		{
+			if(emotion<10)
+			{
+				return randomSadResponses [r.nextInt(randomSadResponses.length)];
+			}
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
 		}	
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
@@ -526,9 +530,6 @@ public class ChatBotMir
 			"that yourself!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "I like that", "You make me feel like " +
 			"a brand new pair of shoes."};
-	private String [] randomSadResponses = {"You make me so angry sometimes.", "I don't like how you act", "Make " +
-			"that yourself!"};
-	private String [] randomCloseResponses = {"H A P P Y, what's that spell?", "I like that", "You make me feel like " +
-			"a brand new pair of shoes."};
+	private String [] randomSadResponses = {"You make me so sad sometimes.", "Man, ur so sad", "sad, sad sad!"};
 	
 }
