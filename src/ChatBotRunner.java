@@ -44,7 +44,7 @@ public class ChatBotRunner
  chatbot = 4;
  }
  // Get the cuisine that user chooses
-		if(chatbot !=2) {
+		if(chatbot >2) {
 			System.out.println("Which cuisine do you want to talk about American(1), Mexican(2), or Indian(3).");
 			String statement2 = in.nextLine();
 			statement2.toLowerCase();
