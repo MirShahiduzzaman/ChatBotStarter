@@ -161,17 +161,18 @@ public class ChatBotMir
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
 
-		while (!statement.equals("Bye"))
+		while (!statement.equals("bye"))
 		{
 
 
 			statement = in.nextLine();
+			statement = statement.toLowerCase();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
 
 
 		}
-
+		ChatBotRunner.main(foods);
 	}
 	/**
 	 * Get a default greeting 	
@@ -258,9 +259,9 @@ public class ChatBotMir
 		{
 			response = transformIYouStatement(statement);
 		}
-		else
+		else if(statement.length()>0)
 		{
-			getRandomResponse();
+			response = getRandomResponse();
 		}
 		
 		return response;
@@ -403,9 +404,9 @@ public class ChatBotMir
 			{
 				emotion++;
 				chosenFood = foods[i].trim();
+				idx = i;
 				i = foods.length;
 				contQuest = true;
-				idx = i;
 				return "Here's the ingredients for " + chosenFood + ":\n" + ingredients[i] + "\n\nDo you want the " +
 						"directions?";
 			}
@@ -507,7 +508,11 @@ public class ChatBotMir
 			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
 		}
 		if (emotion < 0)
-		{	
+		{
+			if(emotion<10)
+			{
+				return randomSadResponses [r.nextInt(randomSadResponses.length)];
+			}
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
 		}	
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
@@ -525,5 +530,6 @@ public class ChatBotMir
 			"that yourself!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "I like that", "You make me feel like " +
 			"a brand new pair of shoes."};
+	private String [] randomSadResponses = {"You make me so sad sometimes.", "Man, ur so sad", "sad, sad sad!"};
 	
 }

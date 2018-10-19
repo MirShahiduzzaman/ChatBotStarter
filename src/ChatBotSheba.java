@@ -1,3 +1,4 @@
+//Sheba Sow
 import java.util.*;
 
 /**
@@ -29,12 +30,9 @@ public class ChatBotSheba
      * Get a default greeting
      * @return a greeting
      */
-    public String getGreeting()
-    {
-        return "There's a lot of weird terms in the world of food. Type some below and I will define it";
 
-    }
     public void dictionary (int cuisine) {
+        //created list of terms and definitions that will be used depending on the user's favorite cuisine.
         String wordList = "Al dente; To the tooth in Italian, the term refers to firm pasta cooked to the right level of resistance when chewed;Acidulate;To make a dish slightly sour or acidic in order to bring out other flavours, or to make the dish more tender. Usually done by adding a small amount of lemon juice or vinegar;Braise; To sauté meat or vegetables, which are then slowly cooked over low heat using ceramic earthenware or a stockpot;  Bake blind ; To bake an empty pie, tart or flan shell so the pastry is partially cooked before the filling is added, or to cook completely if the filling isn’t to be cooked with the shell; Baste;To moisten foods with fat or other seasoned liquids during cooking.Basting prevents drying out and adds flavour; Beat; To mix foods thoroughly to a smooth consistency using a spoon, fork, whisk or electric beater/mixer; Blanch;To plunge fruits or vegetables briefly in boiling water to lock in colour and flavour. They are then refreshed in very cold or ice water to stop it cooking further; Braise;To cook gently in a small amount of liquid in a covered pan;Bechamel; A rich white sauce infused with milk, herbs and butter; Charcuterie; A fancy French term for the preparation of cooked meats ranging from bacon to cured meats and sausage. The video above provides tips for preparing your own charcuterie plate;Broil; To cook above or below a direct heat source, usually on a rack or spit in an oven; Bruise;To crush gently using a heavy knife, pestle or rolling pin to release the flavours of spices, citrus peel, lemongrass, etc;Caramelise;The process of browning sugar. Granulated sugar can be caramelised in a pan until it turns brown and takes on a nutty flavour. Fruit and vegetables can also be caramelised by cooking them slowly in a small amount of fat until they are brown and shiny;Crumb;To coat uncooked food in a breadcrumbs or other crumbs (such as cereal), before frying or baking to give it a crisp, crunchy texture;Deseed;To take the seeds out of a fruit or vegetable, for example, a chilli or tomatoes.;Chiffonade; Delicate looking curlicues of shredded or finely cut vegetable leaves used to garnish a plate or soup;Deglaze; To remove browned bits adhering to a saucepan through the judicious use of water and the application of high heat;Dredge; To lightly coat food with a mixture of cornmeal, breadcrumbs and flour;Dust; To lightly coat food with a powdery ingredient or to lightly coat a work surface with flour;Emulsion; To have one liquid suspended in another, often with liquids that do not mix easily, so emulsions are performed through vigorous stirring or shaking. For example, the combination of oil and vinegar to make salad dressing. The video above demonstrates a few different emulsion techniques for dressings and sauces; Fond; The roasted bits that stick to the surface area of a baking sheet, often used to make sauces and soup stocks;Fines herbes; A seasoning mix that forms the basis of French cooking. Involving a combination of fresh herbs, such as parsley, garlic greens, and tarragon, fines herbes are used in the preparations of meat and vegetables;Gratin; Any dish that is topped with cheese or breadcrumbs and dabs of butter and then baked in the oven, like the pumpkin and pasta gratin above;Grease; To apply butter or oil to a cooking surface to prevent food from sticking when cooked;Hotchpotch; A catchall phrase used to describe any combinations of meat and vegetables braised over low heat to make stew;Infuse; To soak herbs, teas or fruits in liquid to extract their repsective flavors;Julienne; A technique used to describe the process of cutting vegetables into matchstick-sized strips. The video above demonstrates the style;Kosher salt; A flaky type of granular salt preferred by cooks due to its lack of additives, such as iodine;Leaven; The addition of yeast, baking soda or powder that causes bread and cakes to rise during the baking process. When combined with dough or batter, these ingredients form carbon dioxide bubbles, thereby lightening the texture and increasing the volume of baked goods;Mesclun; A combination of small leafy greens often found in specialty stores and food co-ops;Macerate; To immerse food in liquid to breakdown and soften. The technique is commonly used to infuse fruit with liquor and vise versa;Nap; To cover cooked food in a thin layer of sauce. The term is derived from the French word for tablecloth, which is nappe.;Muddle; To press fruit and herbs against the side of a glass to release their juices;Pinch; To grasp a small quantity of spices or seasonings between the thumb and forefinger for sprinkling over food;Devein ; The process of removing the black thread-like tract from the back of a prawn with a small knife;Dilute;Thinning a liquid or reducing the intensity of flavour by adding liquid;Dry-fry;to cook food in a dry frying pan (usually non-stick) without any oil. this method is usually used for sausages, bacon, nuts and seeds; Dust;To top or decorate a dessert with a fine coating of icing sugar or cocoa powder by using a fine sieve and sifting the icing or powder through;Emulsify; To put two or more liquids together that do not usually mix into one another – like oil and vinegar. The process involves whisking one liquid very slowly into the other;Fold;A way of mixing light ingredients together without altering the consistency. Best performed with a rubber spatula and an over-and-under turning technique, rather than traditional stirring;Grease;To cover a pan or dish with butter or oil to prevent food from sticking; Knead;To work the dough by folding, pushing away, turning slightly then repeating. Bread dough is kneaded for at least 10 minutes to develop the gluten in the dough scone or pastry dough is kneaded lightly and gently and only once or twice to make dough smooth (over-kneading will result in tough scones or pastry dough!);Knock back;After bread dough has been left to rise, it needs to be pressed down to allow excess air to escape. This is known as knocking back;Julienne;To cut food into long thin strips resembling matchsticks. Most commonly used when preparing vegetables; Marinate;To soak meat, chicken or fish in a flavoured liquid mixture;Macerate ;To soak fruit in a flavoured liquid mixture;Parboil;To boil a food, usually a vegetable, until it is partially cooked; Pare;To cut the skin off a fruit or vegetable with a small knife, to ensure you lose as little of the flesh as possible;Poach;To cook a food by placing it in a pot of seasoned simmering liquid;Reduction;To thicken and intensify the flavour of a liquid by boiling it till the liquid reduces in volume, so the flavour is concentrated;Reduce;To thicken and intensify the flavour of a liquid by boiling it till the liquid reduces in volume, so the flavour is concentrated; Scald;To heat a liquid almost to boiling point, but only until tiny bubbles form around the edge of the mixture; Sauté;To cook small pieces of food in a small amount of butter or oil over a high heat in a shallow pan, turning and tossing the food so it colours evenly;Score;To make narrow cuts in a diamond-shaped pattern on the surface of a food. This may be done to allow the food to absorb more flavour, to tenderise the dish or simply to decorate it;Sear;To brown meat over a high temperature very quickly in order to seal in the juices; Season ; To improve the flavour of food by adding salt, pepper and other spices and flavours;Shallow-fry;To cook food (such as cutlets, fritters, fish cakes) in enough butter or oil (about halfway up the pieces) so that once you turn it over, it cooks evenly on both sides;Shuck;To remove the shells from seafood; Simmer; To cook a pot or pan of food just below boiling point;Steep; To stand a food in water that is just below boiling point to allow the flavours to emerge;Stir;To mix with a utensil the whole contents of a bowl or saucepan, for example, to combine ingredients completely or to keep the mixture moving so that it heats evenly as it cooks;Stir-fry;Food that is cooked over a high heat with a small amount of oil and is constantly tossed in the pan or wok. The food is usually cut in small pieces to ensure quick cooking;Whisk;Using a fork, wire whisk or beater, to incorporate as much air as possible into the mixture so it is light and airy.";
         String aWordList = "Quadriller; to make a crisscross pattern on the outside of grilled or broiled food.;Deep-fry; type of dry heat cooking — cook food by submerging it in hot oil.;Flake;to add something to food or drink that changes its taste or gives it a particular taste;reconstitute;to add a liquid to dried food so that you can eat it;tenderize verb to make meat soft by hitting it or putting it in a liquid containing oil";
         String mWordList = "Mole ; A sauce that includes many different spices and chocolate.;Guacamole; A mashed up preparation of avocado that literally means avocado sauce.;Enchilada (ehn-chee-lah-dah); A tortilla rolled and filled with a seasoned mixture, usually containing meat, and covered with a sauce flavored with chili.Origin: enchilado or spiced with chili.;Tamales; Meat and cornmeal (masa) wrapped in corn husks;Ceviche; Raw fish marinated in citrus juice, which essentially cooks the delicate seafood;Paella: This signature meal is made of rice, chicken, seafood, and other ingredients seasoned with saffron (the most expensive spice in the world).;Chiles rellenos; A mild green chile, usually a poblano, that is stuffed with cheese and/or meat, dipped in batter, and fried. Pollo; Chicken;Carne; meat;Cerveza; Beer. You could go beyond Corona and drink a Negra Modelo with a lime.;Tres leches; A cake soaked in evaporated milk, sweetened condensed milk, and heavy cream. The name is literally three milks cake.;Helado frito; Fried ice cream. Ice cream is rolled in something crunchy, usually corn flakes, then doused in potent liquor and set on fire. Cinnamon sparks as it is sprinkled over.;Pepitas; Pumpkin seeds.;Queso fresco; A mild, cow’s milk cheese that does not melt. Similar in texture to feta cheese, but milder.;Chipotle; A smoked jalapeño.;Arroz; Rice is a staple in Mexican cooking and arroz y frijoles (rice and beans) is served with nearly every dish;Frijoles; Beans, as in frijoles refritos, the ever popular refried beans.;quesadilla; a cheese-filled tortilla that's grilled, with vegetables and spices sometimes added;sopapilla; a small, pillow-shaped fried pastry dough mostly eaten as a dessert;taco; a folded or rolled tortilla filled with minced beef or chicken, beans, spices, etc;salsa; a spicy sauce made from tomatoes, onions, chilli peppers, etc;nachos; tortilla chips covered with cheese and various other ingredients;churro; a strip of sweet fried dough sprinkled with sugar and cinnamon;burrito; a tortilla that's folded over and filled with meat, beans and cheese;adobo; a paste or marinade of chillies, vinegar, herbs and spices for flavouring meat or fish";
@@ -44,7 +42,7 @@ public class ChatBotSheba
         String defList[];
         termList = new String[wordList.split(";").length / 2];
         defList = new String[wordList.split(";").length / 2];
-        makearray(wordList.split(";"), termList, defList);
+        makearray(wordList.split(";"), termList, defList); // turns any data into a list
         String aTerm[];
         String aDef[];
         aTerm = new String[aWordList.split(";").length / 2];
@@ -65,6 +63,7 @@ public class ChatBotSheba
         String chosenWord = "";
         String chosenFood = "";
         String chosenFoodDef = "";
+        // assigning the list that will be used for recommended terms. this is based on the information passed from the runner
         if (cuisine == 1) {
 
             chosenWord = "American";
@@ -88,13 +87,15 @@ public class ChatBotSheba
             chosenFoodDef = getItem(defList);
 
         }
+        //lets user choose whether they want to search up words or learn or leave
         System.out.println("Cooking is so much fun but it can be difficult to read recipes due to the strange vocabulary. Since you love " + chosenWord +" cuisine learn more food terms (press 1) or use our food word search (press 2) or leave 3 :( ");
         String userResponse;
         Scanner input = new Scanner(System.in);
         String found = "";
         String userInput = input.nextLine();
+        //continues to give terms or give definitions until the user wants to leave
         while(!userInput.equals("3")) {
-            chosenFood = getItem(cuisineTerm);
+            chosenFood = getItem(cuisineTerm); //returns a random term from the li
             chosenFoodDef = getItem(cuisineDef);
             if (userInput.equals("1")) {
                 System.out.println("Do you know what " + chosenFood + " means?");
@@ -104,7 +105,7 @@ public class ChatBotSheba
                     System.out.println(chosenFood + ": " + chosenFoodDef);
                 }
                 else if (userResponse.toLowerCase().equals("yes")) {
-                    System.out.println(generatePositiveComment(pos));
+                    System.out.println(generateComment(pos)); //gives different responses to yes
                 } else {
                     System.out.println("I'll take that as a no... it means " + chosenFoodDef);
                 } }
@@ -112,7 +113,7 @@ public class ChatBotSheba
             else if (userInput.equals("2")) {
                 System.out.println("Type in a word and lets see if I know the answer");
                 userResponse = input.nextLine();
-                found = find(userResponse, termList, defList, aTerm, aDef, iTerm, iDef, mTerm, mDef, pos);
+                found = find(userResponse, termList, defList, aTerm, aDef, iTerm, iDef, mTerm, mDef, pos); //searches for term that user inputted by checking all list
                 System.out.println(found);
             }
             System.out.println("");
@@ -144,8 +145,11 @@ public class ChatBotSheba
         return list[randIdx];
     }
 
+
     public String find(String word, String[]listOne,String[] oneDef,String[]listTwo,String[] twoDef,String[]listThree,String[] threeDef,String[]listFour,String[] fourDef,String[] phrase)
     {
+        String [] confused = {"uhh I dont know what that means. Can you tell me", "I dont know that word. what does it mean","wow what does that mean?","never heard of it what does it mean?","thats....a new one. what does it mean?"};
+
         for(int x = 0; x<listOne.length-1;x++){
             if(listOne[x].equals(word))
             {
@@ -167,26 +171,28 @@ public class ChatBotSheba
 
             }
         }
-        for(int x = 0; x<listOne.length-1;x++) {
+        for(int x = 0; x<listFour.length-1;x++) {
             if (listFour[x].equals(word)) {
+
                 return fourDef[x];
 
             }
         }
-        System.out.println("uhh I dont know what that means. Can you tell me");
+        System.out.println(generateComment(confused)); //gives differenet responses when they dont know
         Scanner ans = new Scanner(System.in);
         if (ans.nextLine().length() == 0)
         {
             return "Say something, please.";
         }
-        return generatePositiveComment(phrase);
+        return generateComment(phrase);
 
     }
-    public static String generatePositiveComment(String[] phrases)
+    public static String generateComment(String[] phrases)
     {
         int posIdx = (int)Math.round(Math.random()*phrases.length-1);
         return phrases [posIdx];
     }
+
     public static void makearray (String[] list, String[] listOne, String[] listTwo)
     {
         int idxOne = 0;
