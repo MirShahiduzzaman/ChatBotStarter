@@ -1,4 +1,6 @@
-//Juan
+
+//Juan Osorio
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,8 +12,12 @@ import java.util.Scanner;
  */
 public class ChatBotJuan
 {
-	int emotion = 0;            	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
+	// constant and some abstract variables that can be preset
+	int emotion = 0;
+	int AMERICAN = 0, MEXICAN = 1, INDIAN = 2;
+	int NAME = 0, ADDRESS = 1;
 
+	String choice = "American";
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -20,49 +26,108 @@ public class ChatBotJuan
 	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
-		System.out.println (getGreeting());
-		System.out.println("If you want to change at any time then just say you want to switch.");
+		System.out.println ("Hi, My name is The traveler, I know all about restaurants you can get American, Mexican and Indian food, which cuisine do you want to learn about today?");
+		System.out.println("Also, if you want to change at any time then just say you want to switch.");
+		statement = in.nextLine();
+		choice = setCuisine(statement);
+		intro(choice);
 		while (!statement.equals("Bye"))
 		{
-			statement = in.nextLine();			//gets Response & handles the user reply
-			System.out.println(getResponse(statement));
-		    statement = in.nextLine();
-		    if(statement.equalsIgnoreCase("i want to switch"))
-		    {
-		    	 System.out.println("Hey just making sure, do you want to switch?");
-			}
+			System.out.println(getResponse(statement,choice));
+			statement = in.nextLine();
 		}
 	}
-	/**
-	 * Get a default greeting 	
-	 * @return a greeting
-	 */	
-	public String getGreeting()
+	public void intro(String choice)
 	{
-		return "Hi, My name is The traveler, I know all about restaurants you can get American, Mexican and Indian food, which cuisine do you want to learn about today?";
+		System.out.println("Hey, I see you chose" + choice);
+		System.out.println("I know some cities where you can get some nice"+choice+" food");
+		recommend(choice);
 	}
-	
+	public void recommend(String choice) {
+        Scanner confirmation = new Scanner(System.in);
+        boolean like = true;
+        int option = 0;
+        String input = "";
+        if (like == false && option < 6)
+        {
+            System.out.print("Do you like" + cities[option] + "?");
+            input = confirmation.nextLine();
+            if (findKeyword(input, "yes") >= 0)
+            {
+                String op = option + "";
+                System.out.println("Yay! I know that" + getCity(op));
+            }
+        }
+       else
+        {
+            getResponse(input,choice);
+        }
+    }
+    public static String getCity(String option)
+    {
+
+        if(option.equals("american"))
+        {
+            return "american";
+        }
+        else if (option.equals("mexican"))
+        {
+            return "Mexixcan";
+        }
+        else
+        {
+            return "indian";
+        }
+    }
+	public static String setCuisine(String str)
+	{
+		if(str.indexOf("american") > -1) {
+            return ("american");
+        }
+			else if(str.indexOf("mexican") > -1) {
+            return ("mexican");
+        }
+		else if (str.indexOf("indian") > -1) {
+            return ("indian");
+        }
+		    else
+		return ("nothing");
+	}
 	/**
 	 * Gives a response to a user statement
 	 * @param statement - the user statement
 	 * @return a response based on the rules given
 	 */
-	public String getResponse(String statement)
+	public String getResponse(String statement, String choice)
 	{
 		String response = "";
-		
+		Scanner oolean = new Scanner(System.in);
+
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
 		}
+		else if (findKeyword(statement,"i want to switch",0) >= 0)
+		{
+			System.out.println("Hey just making sure, do you want to switch?");
+			String confirmation = oolean.nextLine();
+			if(findKeyword(confirmation,"yes") >= 0 )
+			{
+			//	ChatBotRunner.main();
+			}
+			else
+			{
+				response = "ok then!";
+			}
+		}
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
-                	emotion--;
+			response = "I'm sorry I don't need that negativity in my life.";
+			emotion--;
 		}
 		else if (findKeyword(statement, "levin") >= 0)
 		{
-			response = "More like LevinTheDream, amiright?";
+			response = "More like LevinLife, amiright?";
 			emotion++;
 		}
 		else if (findKeyword(statement, "folwell") >= 0)
@@ -88,7 +153,7 @@ public class ChatBotJuan
 		{
 			return response;
 		}
- 		else
+		else
 		{
 			response = getRandomResponse();
 		}
@@ -116,9 +181,8 @@ public class ChatBotJuan
 		return "Why do you want to " + restOfStatement + "?";
 	}
 
-	
 	/**
-	 * Take a statement with "I want <something>." and transform it into 
+	 * Take a statement with "I want <something>." and transform it into
 	 * "Would you really be happy if you had <something>?"
 	 * @param statement the user statement, assumed to contain "I want"
 	 * @return the transformed statement
@@ -138,10 +202,9 @@ public class ChatBotJuan
 		String restOfStatement = statement.substring(psn + 6).trim();
 		return "Would you really be happy if you had " + restOfStatement + "?";
 	}
-	
-	
+
 	/**
-	 * Take a statement with "I <something> you" and transform it into 
+	 * Take a statement with "I <something> you" and transform it into
 	 * "Why do you <something> me?"
 	 * @param statement the user statement, assumed to contain "I" followed by "you"
 	 * @return the transformed statement
@@ -157,17 +220,14 @@ public class ChatBotJuan
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		
+
 		int psnOfI = findKeyword (statement, "I", 0);
 		int psnOfYou = findKeyword (statement, "you", psnOfI);
-		
+
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 		return "Why do you " + restOfStatement + " me?";
 	}
-	
 
-	
-	
 	/**
 	 * Search for one word in phrase. The search is not case
 	 * sensitive. This method will check that the given goal
@@ -184,22 +244,17 @@ public class ChatBotJuan
 	 * @return the index of the first occurrence of goal in
 	 *         statement or -1 if it's not found
 	 */
-	private int findKeyword(String statement, String goal,
-			int startPos)
+	private int findKeyword(String statement, String goal, int startPos)
 	{
 		String phrase = statement.trim().toLowerCase();
 		goal = goal.toLowerCase();
-
-		// The only change to incorporate the startPos is in
-		// the line below
+		// The only change to incorporate the startPos is in the line below
 		int psn = phrase.indexOf(goal, startPos);
 
-		// Refinement--make sure the goal isn't part of a
-		// word
+		// Refinement--make sure the goal isn't part of a word
 		while (psn >= 0)
 		{
-			// Find the string of length 1 before and after
-			// the word
+			// Find the string of length 1 before and after the word
 			String before = " ", after = " ";
 			if (psn > 0)
 			{
@@ -212,30 +267,25 @@ public class ChatBotJuan
 						psn + goal.length() + 1);
 			}
 
-			// If before and after aren't letters, we've
-			// found the word
+			// If before and after aren't letters, we've found the word
 			if (((before.compareTo("a") < 0) || (before
 					.compareTo("z") > 0)) // before is not a
-											// letter
+					// letter
 					&& ((after.compareTo("a") < 0) || (after
-							.compareTo("z") > 0)))
+					.compareTo("z") > 0)))
 			{
 				return psn;
 			}
-
-			// The last position didn't work, so let's find
-			// the next, if there is one.
+			// The last position didn't work, so let's find the next, if there is one.
 			psn = phrase.indexOf(goal, psn + 1);
-
 		}
-
 		return -1;
 	}
-	
+
 	/**
 	 * Search for one word in phrase.  The search is not case sensitive.
 	 * This method will check that the given goal is not a substring of a longer string
-	 * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.  
+	 * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.
 	 * @param statement the string to search
 	 * @param goal the string to search for
 	 * @return the index of the first occurrence of goal in statement or -1 if it's not found
@@ -244,8 +294,6 @@ public class ChatBotJuan
 	{
 		return findKeyword (statement, goal, 0);
 	}
-	
-
 
 	/**
 	 * Pick a default response to use if nothing else fits.
@@ -255,24 +303,26 @@ public class ChatBotJuan
 	{
 		Random r = new Random ();
 		if (emotion == 0)
-		{	
+		{
 			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
 		}
 		if (emotion < 0)
-		{	
+		{
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-		}	
+		}
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
-	
+
+
 	private String [] randomNeutralResponses = {"Interesting, tell me more", "Hmmm.", "Do you really think so?", "You don't say.", "It's all boolean to me.", "So, would you like to go for a walk?", "Could you say that again?"};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	private String [][] NewYork = {{"Bleeker Street Pizza","69 7th Ave S, New York City, NY 10014-4043"},{"La Boina Roja","8022 37th Ave, New York City, NY 11372-6720"},{"Milon Restaurant","93 1st Ave, New York City,Ny 10003-2922"}};
-	private String [][] SanFrancisco = {{},{},{}};
-	private String [][] Miami = {};
-	private String [][]Washington = {};
-	private String [][]Seattle = {};
-	private String [] cities = new String[]{"New York City","San Francisco","Maimi","Washington D.C.","Seattle"};
-	private String [] cuisines = new String[]{"American","Mexican","Indian"};
+
+	private String [][] NewYork = {{"Bleeker Street Pizza","69 7th Ave S, New York City, NY 10014-4043"},{"El Cnetro","824 9th Ave New York City, NY"},{"Milon Restaurant","93 1st Ave, New York City,Ny 10003-2922"}};
+	private String [][] SanFrancisco = {{"Hollywood Cafe","530 North Point St, San Francisco, CA"},{"Tacorea","809 Bush St, San Francisco, CA"},{"Curry Leaf Restaurant","943 Columbus Ave, San Francisco,CA"}};
+	private String [][] Miami = {{"Texas Roadhouse","9161 W flagler St, Miami, FL"},{"Coyo Taco","2320 NW 2nd Ave, Miami, FL"},{"Zaika Indian Cuisine","2176 NE 123rd St, Miami, FL"}};
+	private String [][] Washington = {{"Commissary","1443 P St NW Washington DC, DC"},{"El Rinconcito","1129 11th St NW, between N L St & N M St, Washington DC, DC"},{"Rasika","633 D St NW, Washington DC, DC"}};
+	private String [][] Seattle = {{"Tat's Deli","159 Yesler Way, Seattle, WA"},{"Cactus Restaurant","2820 Alki Ave SW, Seattle, WA"},{"Taste of India","5517 Roosevelt way NE, Seattle, WA"}};
+
+	private String [] cities = {"New York","San Francisco","Miami","Washington DC","Seattle"};
 }
