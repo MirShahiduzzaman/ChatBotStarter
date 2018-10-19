@@ -1,4 +1,4 @@
-//Mir
+//Mir Shahiduzzaman
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,20 +13,59 @@ public class ChatBotMir
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 
-	//NEED TO FINISH
+	//The foods that the chef will talk about - there is an options menu that will display this list
 	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dogs","Philly Cheese Steak","Nachos","Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies"};
 
 	String[] ingredients = 	{
-			"1 (16 pound) whole turkey, neck and giblets removed\n","1/4 cup extra-virgin olive oil", "1 teaspoon salt","1/2 teaspoon ground black pepper","1 teaspoon ground thyme1 cup honey","1/2 cup melted butter","2 teaspoons dried sage leaves","1 tablespoon minced fresh parsley","1 teaspoon dried basil","1 teaspoon salt","1 teaspoon ground black pepper",
+			"1 (16 pound) whole turkey, neck and giblets removed\n"+
+					"1/4 cup extra-virgin olive oil\n"+
+					"1 teaspoon salt\n"+
+					"1/2 teaspoon ground black pepper\n"+
+					"1 teaspoon ground thyme1 cup honey\n"+
+					"1/2 cup melted butter\n"+
+					"2 teaspoons dried sage leaves\n"+
+					"1 tablespoon minced fresh parsley\n"+
+					"1 teaspoon dried basil\n"+
+					"1 teaspoon salt\n"+
+					"1 teaspoon ground black pepper",
 
-			"2 pounds freshly ground chuck, (at least 80% lean, a.k.a. 80/20)", "1 tablespoon onion powder", "1 teaspoon salt","1 teaspoon freshly ground black pepper","12 slices deli-counter American cheese","6 large burger buns, preferably homemade, toasted if desired","Any ingredient for garnishing",
+			"2 pounds freshly ground chuck, (at least 80% lean, a.k.a. 80/20)\n"+
+					"1 tablespoon onion powder\n"+
+					"1 teaspoon salt\n"+
+					"1 teaspoon freshly ground black pepper\n"+
+					"12 slices deli-counter American cheese\n"+"6 large burger buns, preferably homemade, toasted if " +
+					"desired\n"+
+					"Any ingredient for garnishing",
 
-			"2 tablespoons butter","8 slices rye bread", "8 slices deli sliced corned beef", "8 slices Swiss cheese", "1 cup sauerkraut, drained","1/2 cup Thousand Island dressing",
+			"2 tablespoons butter\n"+
+					"8 slices rye bread\n"+
+					"8 slices deli sliced corned beef\n"+
+					"8 slices Swiss cheese\n"+
+					"1 cup sauerkraut, drained\n"+
+					"1/2 cup Thousand Island dressing",
 
-			"4 hot dog buns", "2 tbsp. butter, softened", "1/4 tsp. garlic powder", "1/4 tsp. onion powder", "4 hot " +
-					"dogs, split lengthwise (be careful not to cut all the way through)", "3 c. shredded cheddar", "4 Green onions, sliced",
+			"4 hot dog buns\n"+
+					"2 tbsp. butter, softened\n"+
+					"1/4 tsp. garlic powder\n"+
+					"1/4 tsp. onion powder\n"+
+					"4 hot dogs, split lengthwise (be careful not to cut all the way through)\n"+
+					"3 c. shredded cheddar\n"+
+					"4 Green onions, sliced",
 
-			"1 (12-ounce) flank steak, trimmed","1/4 teaspoon kosher salt","1/4 teaspoon freshly ground black pepper","2 (5-inch) portobello mushroom caps","2 teaspoons extra-virgin olive oil, divided","1 cup thinly sliced onion","1 1/2 cups thinly sliced green bell pepper","2 teaspoons minced garlic","1/2 teaspoon Worcestershire sauce","1/2 teaspoon lower-sodium soy sauce","2 teaspoons all-purpose flour","1/2 cup 1% low-fat milk","1 ounce provolone cheese, torn into small pieces","2 tablespoons grated Parmigiano-Reggiano cheese","1/4 teaspoon dry mustard","4 (3-ounce) hoagie rolls, toasted",
+			"1 (12-ounce) flank steak, trimmed\n"+
+					"1/4 teaspoon kosher salt\n"+
+					"1/4 teaspoon freshly ground black pepper\n"+
+					"2 (5-inch) portobello mushroom caps\n"+
+					"2 teaspoons extra-virgin olive oil, divided\n"+
+					"1 cup thinly sliced onion\n"+
+					"1 1/2 cups thinly sliced green bell pepper\n"+
+					"2 teaspoons minced garlic","1/2 teaspoon Worcestershire sauce\n"+
+					"1/2 teaspoon lower-sodium soy sauce\n"+
+					"2 teaspoons all-purpose flour\n"+
+					"1/2 cup 1% low-fat milk\n"+
+					"1 ounce provolone cheese, torn into small pieces\n"+
+					"2 tablespoons grated Parmigiano-Reggiano cheese\n"+
+					"1/4 teaspoon dry mustard","4 (3-ounce) hoagie rolls, toasted",
 
 			"1 pound ground beef\n"+
 					"1 (1.25 ounce) package taco seasoning mix\n"+
@@ -35,9 +74,10 @@ public class ChatBotMir
 					"1 cup shredded sharp Cheddar cheese, or more to taste\n"+
 					"1 (15.5 ounce) can refried beans\n"+
 					"1 cup sour cream, or more to taste\n"+
-					"Friendship " +
-					"Sour Cream 16 Oz","1 (10 ounce) can pitted black olives, drained and chopped","4 green onions," +
-					" diced","1 (4 ounce) can sliced jalapeno peppers, drained",
+					"Friendship Sour Cream 16 Oz\n"+
+					"1 (10 ounce) can pitted black olives, drained and chopped\n"+
+					"4 green onions, diced\n"+
+					"1 (4 ounce) can sliced jalapeno peppers, drained",
 
 			"3 and 1/4 cups all-purpose flour\n"+
 					"1/2 cup yellow cornmeal\n"+
@@ -92,7 +132,7 @@ public class ChatBotMir
 					"2 teaspoons vanilla extract\n" +
 					"1 teaspoon baking soda\n" +
 					"2 teaspoons hot water\n" +
-					"1/2 teaspoon salt\n"
+					"1/2 teaspoon salt"
 								};
 
 
