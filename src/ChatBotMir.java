@@ -261,7 +261,7 @@ public class ChatBotMir
 		}
 		else if(statement.length()>0)
 		{
-			getRandomResponse();
+			response = getRandomResponse();
 		}
 		
 		return response;
