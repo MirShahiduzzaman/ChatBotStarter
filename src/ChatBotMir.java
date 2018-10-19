@@ -14,7 +14,8 @@ public class ChatBotMir
 	int emotion = 0;
 
 	//The foods that the chef will talk about - there is an options menu that will display this list
-	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dogs","Philly Cheese Steak","Nachos","Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies"};
+	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dog","Philly Cheese Steak","Nachos",
+			"Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies"};
 
 	String[] ingredients = 	{
 			"1 (16 pound) whole turkey, neck and giblets removed\n"+
@@ -33,7 +34,8 @@ public class ChatBotMir
 					"1 tablespoon onion powder\n"+
 					"1 teaspoon salt\n"+
 					"1 teaspoon freshly ground black pepper\n"+
-					"12 slices deli-counter American cheese\n"+"6 large burger buns, preferably homemade, toasted if " +
+					"12 slices deli-counter American cheese\n"+
+					"6 large burger buns, preferably homemade, toasted if " +
 					"desired\n"+
 					"Any ingredient for garnishing",
 
@@ -44,13 +46,11 @@ public class ChatBotMir
 					"1 cup sauerkraut, drained\n"+
 					"1/2 cup Thousand Island dressing",
 
-			"4 hot dog buns\n"+
-					"2 tbsp. butter, softened\n"+
-					"1/4 tsp. garlic powder\n"+
-					"1/4 tsp. onion powder\n"+
-					"4 hot dogs, split lengthwise (be careful not to cut all the way through)\n"+
-					"3 c. shredded cheddar\n"+
-					"4 Green onions, sliced",
+			"2 tablespoons grated Parmesan cheese\n"+
+					"1 teaspoon garlic powder\n"+
+					"1 teaspoon dried basil, crushed\n"+
+					"4 hot dog buns, split\n"+
+					"2 tablespoons margarine, softened\n",
 
 			"1 (12-ounce) flank steak, trimmed\n"+
 					"1/4 teaspoon kosher salt\n"+
@@ -136,7 +136,14 @@ public class ChatBotMir
 								};
 
 
-	String[][] Directions = {};
+	String[] Directions = {"https://www.allrecipes.com/recipe/212677/herb-glazed-roasted-turkey/", "http://www" +
+			".foodrepublic.com/recipes/all-american-cheeseburger-recipe/", "https://www.allrecipes" +
+			".com/recipe/47717/reuben-sandwich-ii/", "https://www.allrecipes" +
+			".com/recipe/154209/quick-garlic-breadsticks/", "https://www.myrecipes.com/recipe/philly-cheesesteak-0",
+			"https://www.allrecipes.com/recipe/51147/super-nachos/", "https://sallysbakingaddiction" +
+			".com/how-to-make-chicago-style-deep-dish-pizza/", "https://www.allrecipes" +
+			".com/recipe/68301/grilled-delmonico-steaks/", "https://www.allrecipes" +
+			".com/recipe/15373/best-ever-blueberry-cobbler/", "https://www.allrecipes.com/recipe/10813/best-chocolate-chip-cookies/"};
 
 
 	/**
@@ -188,6 +195,11 @@ public class ChatBotMir
 		else if(findKeyword(statement, "recipe for",0) >= 0)
 		{
 			response = transformRecipeForStatement(statement);
+			response += "\n" + transformFoodStatement(statement);;
+		}
+		else if(findKeyword(statement, "recipe",0) >= 0)
+		{
+			response += "\n" + transformFoodStatement(statement);
 		}
 		else if (findKeyword(statement, "no") >= 0)
 		{
@@ -313,9 +325,14 @@ public class ChatBotMir
 		String restOfStatement = statement.substring(psn + 10).trim();
 		return "The recipe for " + restOfStatement + " is simple!";
 
-		//if(restOfStatement )
 	}
 
+	/**
+	 * returns list of ingredients needed for a certain food
+	 * gives link to website for directions and more info
+	 * @param statement the user statement, check when statement has "recipe for" or "recipe"
+	 * @return the transformed statement
+	 */
 	private String transformFoodStatement(String statement)
 	{
 		//  Remove the final period, if there is one
@@ -451,7 +468,7 @@ public class ChatBotMir
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"You make me so angry sometimes.", "I don't like how you act", "Mak " +
+	private String [] randomAngryResponses = {"You make me so angry sometimes.", "I don't like how you act", "Make " +
 			"that yourself!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "I like that", "You make me feel like " +
 			"a brand new pair of shoes."};
