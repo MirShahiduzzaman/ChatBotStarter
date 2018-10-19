@@ -1,9 +1,7 @@
+//Calvin Lam
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Arrays;
-import org.apache.commons.lang3.ArrayUtils;
-//Download for ArrayUtils to work
-//http://commons.apache.org/proper/commons-net/download_net.cgi
+
 /**
  * A program to carry on conversations with a human user.
  * This version:
@@ -20,6 +18,7 @@ public class ChatBotCalvin
 	private int score;
 	private int numberofquestions;
 	private int type = 1;
+	private int num = 0;
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -32,6 +31,7 @@ public class ChatBotCalvin
 		System.out.println(intro(statement));
 		score = 0;
 		numberofquestions = 0;
+		num = 0;
 		type = cuisine;
 		while (!statement.equals("Bye") && numberofquestions < 10)
 		{
@@ -83,7 +83,7 @@ public class ChatBotCalvin
 	{
 		String response = "";
 		statement.toLowerCase();
-		if (statement.equals(randomA))
+		if (statement.equalsIgnoreCase(randomA))
 		{
 			response = "Correct!";
 			score++;
@@ -127,13 +127,9 @@ public class ChatBotCalvin
 	public String getQ(String statement)
 	{
 		String response = "";
-		if (statement.length() == 0)
-		{
-			response = "Say something, please.";
-		}
 
 		// Response transforming I want to statement
-		else if (findKeyword(statement, "I want to", 0) >= 0)
+		if (findKeyword(statement, "I want to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
 		}
@@ -361,41 +357,37 @@ public class ChatBotCalvin
 	 */
 	private String getRandomQuestions ()
 	{
-		Random r = new Random ();
-		int num = r.nextInt(randomQuestionsAmerican.length);
+
 		if(type == 1)
 		{
 			// American
 			randomQ = randomQuestionsAmerican[num];
 			randomA = randomAnswersAmerican[num];
-			randomQuestionsAmerican = ArrayUtils.removeElement(randomQuestionsAmerican, randomQuestionsAmerican[num]);
-			randomAnswersAmerican = ArrayUtils.removeElement(randomAnswersAmerican, randomAnswersAmerican[num]);
+
 		}
 		if(type == 2)
 		{
 			// Mexican
 			randomQ = randomQuestionsMexican[num];
 			randomA = randomAnswersMexican[num];
-			randomQuestionsMexican = ArrayUtils.removeElement(randomQuestionsMexican, randomQuestionsMexican[num]);
-			randomAnswersMexican = ArrayUtils.removeElement(randomAnswersMexican, randomAnswersMexican[num]);
+
 		}
 		if(type == 3)
 		{
 			// Indian
 			randomQ = randomQuestionsIndian[num];
 			randomA = randomAnswersIndian[num];
-			randomQuestionsIndian = ArrayUtils.removeElement(randomQuestionsIndian, randomQuestionsIndian[num]);
-			randomAnswersIndian = ArrayUtils.removeElement(randomAnswersIndian, randomAnswersIndian[num]);
 		}
+		num++;
 		return randomQ;
 	}
 	/**
 	 * Creates an array of questions and answers for 3 cuisines.
 	 */
-	private String [] randomQuestionsAmerican = {"What word means, to make a crisscross pattern on the outside of grilled or broiled food?.", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
-	private String [] randomAnswersAmerican = {"Quadriller", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
-	private String [] randomQuestionsMexican = {"What word means, a mashed up preparation of avocado that literally means avocado sauce?", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
-	private String [] randomAnswersMexican = {"Guacamole", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
-	private String [] randomQuestionsIndian = {"What is a dish with layers of meat called?", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
-	private String [] randomAnswersIndian = {"biryani", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
+	private String [] randomQuestionsAmerican = {"What word means, to make a crisscross pattern on the outside of grilled or broiled food?.", "What food uses a whole turkey?", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
+	private String [] randomAnswersAmerican = {"Quadriller", "Roast Turkey", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
+	private String [] randomQuestionsMexican = {"What word means, a mashed up preparation of avocado that literally means avocado sauce?", "What is a sauce that includes many different spices and chocolate?", "What does pollo mean?", "What does cerveza mean?", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15"};
+	private String [] randomAnswersMexican = {"Guacamole", "Mole", "Chicken", "Beer", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15"};
+	private String [] randomQuestionsIndian = {"What is a dish with layers of meat called?", "What is a deep-fried Indian appetizer with a spicy vegetable filling covered in batter?", "What is tea made by boiling tea leaves along with milk?", "What is thin pancake made of whole wheat flour that's cooked on a hotplate?", "What is small pieces of boneless chicken cooked on a skewer in a tandoor oven?", "What is beans, as in frijoles refritos?", "What is tortilla chips covered with cheese and various other ingredients?", "What is a strip of sweet fried dough sprinkled with sugar and cinnamon?", "What is a tortilla that's folded over and filled with meat, beans and cheese", "What is a paste or marinade of chillies, vinegar, herbs and spices for flavouring meat or fish.", "Q11", "Q12", "Q13", "Q14", "Q15"};
+	private String [] randomAnswersIndian = {"biryani", "bhaji", "chai", "chapati", "chicken tikka", "Frijoles", "nachos", "churro", "burrito", "adobo", "A11", "A12", "A13", "A14", "A15"};
 }

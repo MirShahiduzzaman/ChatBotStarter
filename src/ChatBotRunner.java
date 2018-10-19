@@ -1,4 +1,4 @@
-//Mir Shahiduzzaman, Sheba, Juan, Calvin
+//Mir Shahiduzzaman, Sheba, Juan, Calvin Lam
 import java.util.Scanner;
 
 /**
