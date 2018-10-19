@@ -258,7 +258,7 @@ public class ChatBotMir
 		{
 			response = transformIYouStatement(statement);
 		}
-		else
+		else if(statement.length()>0)
 		{
 			getRandomResponse();
 		}
@@ -524,6 +524,10 @@ public class ChatBotMir
 	private String [] randomAngryResponses = {"You make me so angry sometimes.", "I don't like how you act", "Make " +
 			"that yourself!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "I like that", "You make me feel like " +
+			"a brand new pair of shoes."};
+	private String [] randomSadResponses = {"You make me so angry sometimes.", "I don't like how you act", "Make " +
+			"that yourself!"};
+	private String [] randomCloseResponses = {"H A P P Y, what's that spell?", "I like that", "You make me feel like " +
 			"a brand new pair of shoes."};
 	
 }
