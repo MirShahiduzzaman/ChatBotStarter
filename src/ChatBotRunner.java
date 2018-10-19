@@ -18,8 +18,8 @@ public class ChatBotRunner
 		ChatBotSheba chatbot3 = new ChatBotSheba();
 		ChatBotCalvin chatbot4 = new ChatBotCalvin();
 
-		int chatbot = 1;
-		int cuisine = 1;
+		int chatbot = 0;
+		int cuisine = 0;
 
 		Scanner in = new Scanner (System.in);
 		// Get the chatbot that user chooses
@@ -44,7 +44,7 @@ public class ChatBotRunner
 		// Get the cuisine that user chooses
 		System.out.println("Which cuisine do you want to talk about American(1), Mexican(2), or Indian(3).");
 		String statement2 = in.nextLine();
-		statement.toLowerCase();
+		statement2.toLowerCase();
 		if (statement2.equals("1") || statement2.equals("american"))
 		{
 			cuisine = 1;
