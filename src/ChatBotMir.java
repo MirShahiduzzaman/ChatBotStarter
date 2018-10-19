@@ -161,17 +161,18 @@ public class ChatBotMir
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
 
-		while (!statement.equals("Bye"))
+		while (!statement.equals("bye"))
 		{
 
 
 			statement = in.nextLine();
+			statement = statement.toLowerCase();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
 
 
 		}
-
+		ChatBotRunner.main(foods);
 	}
 	/**
 	 * Get a default greeting 	
@@ -403,9 +404,9 @@ public class ChatBotMir
 			{
 				emotion++;
 				chosenFood = foods[i].trim();
+				idx = i;
 				i = foods.length;
 				contQuest = true;
-				idx = i;
 				return "Here's the ingredients for " + chosenFood + ":\n" + ingredients[i] + "\n\nDo you want the " +
 						"directions?";
 			}
