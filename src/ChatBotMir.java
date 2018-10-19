@@ -15,7 +15,7 @@ public class ChatBotMir
 
 	//The foods that the chef will talk about - there is an options menu that will display this list
 	String[] foods = {"Roast Turkey", "Cheeseburger","Reuben Sandwich","Hot dog","Philly Cheese Steak","Nachos",
-			"Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookies"};
+			"Chicago Style Pizza","Delmonico’s Steak","Blueberry Cobbler","Chocolate Chip Cookie"};
 
 	String[] ingredients = 	{
 			"1 (16 pound) whole turkey, neck and giblets removed\n"+
@@ -173,14 +173,14 @@ public class ChatBotMir
 	 */	
 	public String getGreeting()
 	{
-		return "Hey, wasup? What recipe do you wanna learn about?";
+		return "Hey, wasup? What food recipe do you want to learn about? Don't forget to include 'recipe' in your " +
+				"sentence!\nAlso, you can type 'options' to learn about what foods I can give you info on.";
 	}
 	
 	/**
 	 * Gives a response to a user statement
 	 * 
-	 * @param statement
-	 *            the user statement
+	 * @param statement the user statement
 	 * @return a response based on the rules given
 	 */
 	public String getResponse(String statement)
@@ -191,7 +191,10 @@ public class ChatBotMir
 		{
 			response = "Say something, please.";
 		}
-
+		else if(findKeyword(statement, "options",0) >= 0)
+		{
+			response = findOpts();
+		}
 		else if(findKeyword(statement, "recipe for",0) >= 0)
 		{
 			response = transformRecipeForStatement(statement);
@@ -233,7 +236,20 @@ public class ChatBotMir
 		
 		return response;
 	}
-	
+
+	/**
+	 * prints out list of foods American chef knows about
+	 */
+	private String findOpts()
+	{
+		String all = "";
+		for(int i = 0; i<foods.length;i++)
+		{
+			all += foods[i] + "\n";
+		}
+		return all;
+	}
+
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "Why do you want to <something>?"
@@ -330,6 +346,9 @@ public class ChatBotMir
 	/**
 	 * returns list of ingredients needed for a certain food
 	 * gives link to website for directions and more info
+	 *
+	 * works even if user inputs s after the food item
+	 *
 	 * @param statement the user statement, check when statement has "recipe for" or "recipe"
 	 * @return the transformed statement
 	 */
@@ -349,7 +368,8 @@ public class ChatBotMir
 		for(int i=0;i<foods.length;i++)
 		{
 			int psn = findKeyword(statement, foods[i], 0);
-			if (psn >= 0)
+			int psa = findKeyword(statement, foods[i] + "s", 0);
+			if (psn >= 0 || psa >=0)
 			{
 				emotion++;
 				chosenFood = foods[i].trim();
