@@ -29,6 +29,19 @@ public class ChatBotCalvin
 		System.out.println (getGreeting());
 		statement = in.nextLine();
 		System.out.println(intro(statement));
+		if (findKeyword(statement, "I had", 0) >= 0)
+		{
+			ChatBotRunner.main(randomQuestionsAmerican);
+		}
+		else if (findKeyword(statement, "I have", 0) >= 0)
+		{
+			if(findKeyword(statement, "not", 0) >= 0)
+				ChatBotRunner.main(randomQuestionsAmerican);
+		}
+		else if(findKeyword(statement, "no", 0) >= 0)
+		{
+			ChatBotRunner.main(randomQuestionsAmerican);
+		}
 		score = 0;
 		numberofquestions = 0;
 		num = 0;
@@ -64,18 +77,15 @@ public class ChatBotCalvin
 		{
 			if(findKeyword(statement, "not", 0) >= 0)
 				response = transformIHadNStatement(statement);
-			ChatBotRunner.main(randomQuestionsAmerican);
 		}
 		else if (findKeyword(statement, "I have", 0) >= 0)
 		{
 			if(findKeyword(statement, "not", 0) >= 0)
 				response = transformIHaveNStatement(statement);
-			ChatBotRunner.main(randomQuestionsAmerican);
 		}
 		else if(findKeyword(statement, "no", 0) >= 0)
 		{
 			response = "No?, well then you should go talk to them first.";
-			ChatBotRunner.main(randomQuestionsAmerican);
 		}
 		else
 			response = "Ok, I'm going to give you a trivia now.";
