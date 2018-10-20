@@ -27,23 +27,23 @@ public class ChatBotRunner
 				"the American Chef(2), the Teacher(3), or the Riddler(4)?");
 		String statement = in.nextLine();
 
- if (statement.equals("1") || statement.equals("traveler") || statement.equals("the traveler"))
- {
- chatbot = 1;
- }
- if (statement.equals("2") || statement.equals("chef") || statement.equals("the chef"))
- {
- chatbot = 2;
- }
- if (statement.equals("3") || statement.equals("teacher") || statement.equals("the teacher"))
- {
- chatbot = 3;
- }
- if (statement.equals("4") || statement.equals("riddler") || statement.equals("the riddler"))
- {
- chatbot = 4;
- }
- // Get the cuisine that user chooses
+		 if (statement.equals("1") || statement.equals("traveler") || statement.equals("the traveler"))
+		 {
+		 	chatbot = 1;
+		 }
+		 if (statement.equals("2") || statement.equals("chef") || statement.equals("the chef"))
+		 {
+		 	chatbot = 2;
+		 }
+		 if (statement.equals("3") || statement.equals("teacher") || statement.equals("the teacher"))
+		 {
+		 	chatbot = 3;
+		 }
+		 if (statement.equals("4") || statement.equals("riddler") || statement.equals("the riddler"))
+		 {
+		 	chatbot = 4;
+		 }
+		 // Get the cuisine that user chooses
 		if(chatbot >2) {
 			System.out.println("Which cuisine do you want to talk about American(1), Mexican(2), or Indian(3).");
 			String statement2 = in.nextLine();
@@ -64,22 +64,22 @@ public class ChatBotRunner
 			//Use Logic to control which chatbot is handling the conversation\
 			//This example had only chatbot1
 
- if(chatbot == 1)
- {
- chatbot1.chatLoop(statement);
- }
- if(chatbot == 2)
- {
- chatbot2.chatLoop(statement);
- }
- if(chatbot == 3)
- {
- chatbot3.chatLoop(statement, cuisine);
- }
- if(chatbot == 4)
- {
- chatbot4.chatLoop(statement, cuisine);
- }
+			 if(chatbot == 1)
+			 {
+			 	chatbot1.chatLoop(statement);
+			 }
+			 if(chatbot == 2)
+			 {
+			 	chatbot2.chatLoop(statement);
+			 }
+			 if(chatbot == 3)
+			 {
+			 	chatbot3.chatLoop(statement, cuisine);
+			 }
+			 if(chatbot == 4)
+			 {
+			 	chatbot4.chatLoop(statement, cuisine);
+			 }
 
 			chatbot2.chatLoop(statement);
 
