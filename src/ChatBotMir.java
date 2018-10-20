@@ -203,7 +203,7 @@ public class ChatBotMir
 			if(findKeyword(statement, "yes",0) >= 0)
 			{
 				response = "Great! Just follow the directions at " + directions[idx] + " and then type another food " +
-						"recipe you want to learn about";
+						"recipe you want to learn about.";
 			}
 			else
 			{

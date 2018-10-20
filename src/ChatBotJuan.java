@@ -39,7 +39,7 @@ public class ChatBotJuan
 	}
 	public void intro(String choice)
 	{
-		System.out.println("Hey, I see you chose" + choice);
+		System.out.println("Hey, I see you chose " + choice);
 		System.out.println("I know some cities where you can get some nice"+choice+" food");
 		recommend(choice);
 	}
